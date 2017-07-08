@@ -54,8 +54,10 @@ $actionID = Yii::$app->controller->action->id;
             </a>
             <ul class="reset" id="navheader">
                 <li class="<?php if($actionID=='index'){echo 'current'; }?>"><a href="?r=show/index">首页</a></li>
+                
+                <li class="<?php if($actionID=='jianli_list'){echo 'current'; }?>"><a href="?r=show/jianli_list" rel="nofollow">简历</a></li>
+
                 <li class="<?php if($actionID=='companylist'){echo 'current'; }?>"><a href="?r=show/companylist" >公司</a></li>
-                <li class="<?php if($actionID=='jianli_list'){echo 'current'; }?>"><a href="?r=show/jianli_list" rel="nofollow">所有简历</a></li>
 <!--                用户不用显示-->
                 <li class="<?php if($actionID=='create'){echo 'current'; }?>"><a href="?r=show/create" rel="nofollow">发布职位</a></li>
             </ul>
@@ -72,7 +74,7 @@ $actionID = Yii::$app->controller->action->id;
                     <span class="red dn" id="noticeDot-0"></span>
                     <i></i>
                 </dt>
-                <dd><a rel="nofollow" href="?r=show/jianli_list">我的简历列表</a></dd>
+
                 <dd><a href="?r=show/collections">我收藏的职位</a></dd>
                 <dd class="btm"><a href="subscribe.html">我应聘的职位</a></dd>
                 <dd><a href="create.html">个人中心</a></dd>

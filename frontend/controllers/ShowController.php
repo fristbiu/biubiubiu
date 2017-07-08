@@ -15,13 +15,14 @@ class ShowController extends Controller{
     public function actionIndex(){
         return $this->render('index');
     }
-//    登录
-    public function actionLogin(){
 
-    }
-//    我的简历
+//    我的所有简历
     public function actionJianli_list(){
         return $this->render('jianli_list');
+    }
+//        单个简历
+    public function actionJianli_one(){
+        return $this->render('jianli_one');
     }
 //    公司------显示所有公司列表
     public function actionCompanylist(){
