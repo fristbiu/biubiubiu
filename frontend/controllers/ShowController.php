@@ -8,11 +8,13 @@ namespace frontend\controllers;
  */
 use Yii;
 use yii\web\Controller;
+use backend\models\Profession_type;
 class ShowController extends Controller{
 //    项目样式
     public $layout='common';
 //    首页
     public function actionIndex(){
+        $sql=Profession_type::find()->asArray()->all();
         return $this->render('index');
     }
 
@@ -51,5 +53,9 @@ class ShowController extends Controller{
 //    收藏
     public function actionCollections(){
         return $this->render('collections');
+    }
+//    个人信息
+    public function actionMessage_people(){
+        return $this->render('message_people');
     }
 }
