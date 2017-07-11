@@ -2,11 +2,11 @@
 		<div id="sidebar">
 			<div class="mainNavs">
 
-									<?php echo $this->render('left_link')?>
+			<?php echo $this->render('left_link')?>
 							</div>
 			<a class="subscribe" href="subscribe.html" target="_blank">订阅职位</a>
 		</div>
-        <div class="content">	
+        <div class="content">
 	        			<div id="search_box">
 		<form id="searchForm" name="searchForm" action="list.html" method="get">
         <ul id="searchType">

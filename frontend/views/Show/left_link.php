@@ -1,5 +1,6 @@
-<?php use backend\models\Profession_type;
-$data=Profession_type::find()->asArray()->all();
+<?php //use backend\models\Profession_type;
+//$data=Profession_type::find()->asArray()->all();
+$data=array();
 ?>
 <?php foreach($data as $key=>$val){
     if($val['parent_id']==0){?>
