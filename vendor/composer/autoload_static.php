@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit7e2bca6a7ad2fb4481bca401a2f2aefe
+class ComposerStaticInit57eab4d0870c082e9f88da494937fc2a
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -48,7 +48,6 @@ class ComposerStaticInit7e2bca6a7ad2fb4481bca401a2f2aefe
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\BrowserKit\\' => 29,
-            'Stecman\\Component\\Symfony\\Console\\BashCompletion\\' => 49,
         ),
         'P' => 
         array (
@@ -153,10 +152,6 @@ class ComposerStaticInit7e2bca6a7ad2fb4481bca401a2f2aefe
         'Symfony\\Component\\BrowserKit\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/browser-kit',
-        ),
-        'Stecman\\Component\\Symfony\\Console\\BashCompletion\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/stecman/symfony-console-completion/src',
         ),
         'Psr\\Log\\' => 
         array (
@@ -535,7 +530,6 @@ class ComposerStaticInit7e2bca6a7ad2fb4481bca401a2f2aefe
         'PHP_Token_NEW' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_NS_C' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_NS_SEPARATOR' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
-        'PHP_Token_NULLSAFE_OBJECT_OPERATOR' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_NUM_STRING' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_OBJECT_CAST' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_OBJECT_OPERATOR' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
@@ -691,10 +685,10 @@ class ComposerStaticInit7e2bca6a7ad2fb4481bca401a2f2aefe
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit7e2bca6a7ad2fb4481bca401a2f2aefe::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit7e2bca6a7ad2fb4481bca401a2f2aefe::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit7e2bca6a7ad2fb4481bca401a2f2aefe::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit7e2bca6a7ad2fb4481bca401a2f2aefe::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit57eab4d0870c082e9f88da494937fc2a::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit57eab4d0870c082e9f88da494937fc2a::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit57eab4d0870c082e9f88da494937fc2a::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit57eab4d0870c082e9f88da494937fc2a::$classMap;
 
         }, null, ClassLoader::class);
     }

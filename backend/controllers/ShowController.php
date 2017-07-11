@@ -8,13 +8,13 @@ namespace backend\controllers;
  */
 use yii\web\Controller;
 
-use backend\models\Profession_type;
+use common\models\jobtype;
 class ShowController extends Controller{
     //此网页里有递归，↓是递归用来接收数组的
     public $recursion=array();
     public function actionIndex(){
         header("Content-Type: text/html;charset=utf-8");
-        $sql=Profession_type::find()->asArray()->all();
+        $sql=jobtype::find()->asArray()->all();
         //递归
         $this->biu_digui($sql,0);
         print_r($this->recursion);
@@ -31,9 +31,9 @@ class ShowController extends Controller{
         foreach($data as $key=>$val){
             if($val['parent_id']==$parent){
 
-                $this->recursion[$val['id']] = $val['pro_name'];
+                $this->recursion[$val['jobtype_id']] =$style.$val['jobtype_name'];
 
-                $this->biu_digui($data,$val['id'],"-".$style);
+                $this->biu_digui($data,$val['jobtype_id'],"-".$style);
 
             }
         }
