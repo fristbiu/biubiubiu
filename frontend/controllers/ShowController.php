@@ -14,7 +14,7 @@ class ShowController extends CommonController{
     public $layout='common';
 //    首页
     public function actionIndex(){
-        echo "212323123";
+        //echo "212323123";
         return $this->render('index');
     }
 
