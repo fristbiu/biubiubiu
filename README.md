@@ -1,6 +1,6 @@
 Yii 2 Advanced Project Template
 ===============================
-11121312312312
+11121312
 Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
 developing complex Web applications with multiple tiers.
 
