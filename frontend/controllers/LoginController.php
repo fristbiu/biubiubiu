@@ -8,8 +8,7 @@ namespace frontend\controllers;
  * Time: 8:05
  */
 use yii\web\Controller;
-
-class LoginController extends Controller{
+class LoginController extends CommonController{
 
     //    登录
     public function actionLogin(){
