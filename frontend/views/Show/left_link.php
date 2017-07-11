@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-<?php //use backend\models\Profession_type;
-//$data=Profession_type::find()->asArray()->all();
-$data=array();
-=======
 <?php use common\models\jobtype;
 $data=jobtype::find()->asArray()->all();
->>>>>>> refs/remotes/origin/master
 ?>
 <?php foreach($data as $key=>$val){
     if($val['parent_id']==0){?>

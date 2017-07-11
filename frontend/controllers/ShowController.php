@@ -12,10 +12,8 @@ use backend\models\Profession_type;
 class ShowController extends CommonController{
 //    项目样式
     public $layout='common';
-    public $defaultAction='index';
 //    首页
     public function actionIndex(){
-       //echo "1111";
         return $this->render('index');
     }
 

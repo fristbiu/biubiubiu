@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-<?php 
-/**
- * 前台公共控制器
- * @access private
- */
-namespace frontend\controllers;
-use Yii;
-use yii\web\Controller;
-class CommonController extends Controller
-{
-
-}
-?>
-=======
 <?php
 namespace frontend\controllers;
 /**
@@ -35,4 +20,3 @@ class CommonController extends Controller{
 //        file_put_contents($this->xiangmu_url().'.\message.php',json_encode($b));
     }
 }
->>>>>>> refs/remotes/origin/master
