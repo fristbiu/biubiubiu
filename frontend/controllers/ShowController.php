@@ -14,9 +14,6 @@ class ShowController extends CommonController{
     public $layout='common';
 //    首页
     public function actionIndex(){
-    	// $session=Yii::$app->session;
-    	// echo $session['user_name'];
-    	// echo "3219739128372913";
         return $this->render('index');
     }
 
