@@ -8,7 +8,14 @@ namespace frontend\controllers;
  */
 use Yii;
 use yii\web\Controller;
+
 class CommonController extends Controller{
+	//定义session直接开启集成公共控制器的可直接使用
+	public function init(){
+        parent::init();
+        session_start();
+        //$session = Yii::$app->session;
+    }
     public function xiangmu_url(){
         return dirname(dirname(__DIR__));
     }

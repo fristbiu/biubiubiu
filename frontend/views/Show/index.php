@@ -1,5 +1,4 @@
-﻿
-		<div id="sidebar">
+﻿	<div id="sidebar">
 			<div class="mainNavs">
 
 									<?php echo $this->render('left_link')?>

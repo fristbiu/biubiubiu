@@ -1,4 +1,8 @@
-﻿<!DOCTYPE HTML>
+﻿<?php 
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+?>
+<!DOCTYPE HTML>
 <html>
 <head>
 <script id="allmobilize" charset="utf-8" src="style/js/allmobilize.min.js"></script>
@@ -32,7 +36,6 @@ var youdao_conv_id = 271546;
 </script> 
 <script type="text/javascript" src="style/js/conv.js"></script>
 </head>
-
 <body id="login_bg">
 	<div class="login_wrapper">
 		<div class="login_header">
@@ -43,22 +46,24 @@ var youdao_conv_id = 271546;
         
     	<input type="hidden" id="resubmitToken" value="" />		
 		 <div class="login_box">
-        	<form id="loginForm" action="index.html">
-				<input type="text" id="email" name="email" value="" tabindex="1" placeholder="请输入登录邮箱地址" />
-			  	<input type="password" id="password" name="password" tabindex="2" placeholder="请输入密码" />
+		 	<?php $form=ActiveForm::begin(array('id'=>'loginForm'));?>
+		 		<?php echo $form->field($model,'user_name')->textInput(array('id'=>'email','name'=>'user_name','placeholder'=>'请输入登录用户名'));?>
+		 		<?=$form->field($model,'user_pwd')->textInput(array('id'=>'password','name'=>'user_pwd','tabindex'=>'2','placeholder'=>'请输入密码'))?>
 				<span class="error" style="display:none;" id="beError"></span>
-			    <label class="fl" for="remember"><input type="checkbox" id="remember" value="" checked="checked" name="autoLogin" /> 记住我</label>
+			    <label class="fl" for="remember">
+			    <input type="checkbox" id="remember" value="" checked="checked" name="autoLogin" /> 记住我</label>
 			    <a href="reset.html" class="fr" target="_blank">忘记密码？</a>
 			    
-				<!--<input type="submit" id="submitLogin" value="登 &nbsp; &nbsp; 录" />-->
-				<a style="color:#fff;" href="index.html" class="submitLogin" title="登 &nbsp; &nbsp; 录"/>登 &nbsp; &nbsp; 录</a>
+			    <?=Html::submitButton('登&nbsp录',array('id'=>'submitLogin'));?>
+				<!-- <input type="submit" id="submitLogin" value="登 &nbsp; &nbsp; 录" /> -->
+				<!-- <a style="color:#fff;" href="index.html" class="submitLogin" title="登 &nbsp; &nbsp; 录"/>登 &nbsp; &nbsp; 录</a> -->
 
 			    
-			    <input type="hidden" id="callback" name="callback" value=""/>
+			   <!--  <input type="hidden" id="callback" name="callback" value=""/>
                 <input type="hidden" id="authType" name="authType" value=""/>
                 <input type="hidden" id="signature" name="signature" value=""/>
-                <input type="hidden" id="timestamp" name="timestamp" value=""/>
-			</form>
+                <input type="hidden" id="timestamp" name="timestamp" value=""/> -->
+			<?php ActiveForm::end();?>
 			<div class="login_right">
 				<div>还没有拉勾帐号？</div>
 				<a  href="?r=login/register"  class="registor_now">立即注册</a>
@@ -69,7 +74,6 @@ var youdao_conv_id = 271546;
         </div>
         <div class="login_box_btm"></div>
     </div>
-
 
 
 </body>

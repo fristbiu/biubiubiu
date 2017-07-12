@@ -61,16 +61,16 @@ $actionID = Yii::$app->controller->action->id;
 <!--                用户不用显示-->
                 <li class="<?php if($actionID=='create'){echo 'current'; }?>"><a href="?r=advertise/create" rel="nofollow">发布职位</a></li>
             </ul>
-            <?php if(!empty($session['user'])){?>
+            <?php if(empty($_SESSION['user_id'])){?>
             <ul class="loginTop">
-                <li><a href="login.html" rel="nofollow">登录</a></li>
+                <li><a href="?r=login/login" rel="nofollow">登录</a></li>
                 <li>|</li>
-                <li><a href="register.html" rel="nofollow">注册</a></li>
+                <li><a href="?r=login/register" rel="nofollow">注册</a></li>
             </ul>
             <?php }else{?>
             <dl class="collapsible_menu">
                 <dt>
-                    <span>jason&nbsp;</span>
+                    <span><?php echo $_SESSION['user_name']?>&nbsp;</span>
                     <span class="red dn" id="noticeDot-0"></span>
                     <i></i>
                 </dt>
