@@ -165,7 +165,7 @@
 	            		            		            				            		<li class="clearfix">
 		            																		            					                	<div class="hot_pos_l">
 			                    	<div class="mb10">
-			                        	<a href="?r=show/toudi" target="_blank">运营总监</a>
+			                        	<a href="?r=toudi/toudi" target="_blank">运营总监</a>
 			                            &nbsp;
 			                            <span class="c9">[北京]</span>
 			                            			                        </div>

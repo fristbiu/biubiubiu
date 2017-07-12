@@ -2,7 +2,7 @@
 namespace frontend\controllers;
 /**
  * Created by PhpStorm.
- * User: junyu
+ * User:公共控制器
  * Date: 2017/7/11
  * Time: 11:27
  */

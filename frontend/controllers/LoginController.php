@@ -3,12 +3,12 @@ namespace frontend\controllers;
 
 /**
  * Created by PhpStorm.
- * User: junyu
+ * User: 登录模块
  * Date: 2017/7/8
  * Time: 8:05
  */
 use yii\web\Controller;
-class LoginController extends Controller{
+class LoginController extends CommonController{
 
     //    登录
     public function actionLogin(){
