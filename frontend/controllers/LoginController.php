@@ -67,6 +67,8 @@ class LoginController extends CommonController{
             $user->user_pwd=md5($data['user_pwd']);
             $user->user_type=$data['user_type'];
             $user->user_phone=$data['user_phone'];
+            $user->reg_time=date('Y-m-d H:i:s');
+            $user->last_time=date('Y-m-d H:i:s');
             // var_dump($user);
             // echo "<pre>";
             // print_r($data);die;
