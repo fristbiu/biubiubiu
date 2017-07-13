@@ -36,9 +36,52 @@ class LoginController extends CommonController{
         	return $this->renderPartial('login',array('model'=>$model));
     	}
     }
-//    注册
+
+    /**
+     * 用户的退出
+     * @access public
+     */
+    public function actionLoginout(){
+        //删除session
+        unset($_SESSION['user_id']);
+        unset($_SESSION['user_name']);
+        echo "<script>alert('退出成功，正在返回主页。');location.href='?r=show/index'</script>";
+    }
+
+
+    /**
+     * 用户的注册
+     * @access public
+     */
     public function actionRegister(){
-        return $this->renderPartial('register');
+        header("content-type:text/html;charset=utf8");
+        if(Yii::$app->request->isPost){
+            //接收数据
+            $data=Yii::$app->request->post();
+            $userData=User::find()->where(array('user_name'=>$data['user_name']))->asArray()->one();
+            if($userData){
+                die("<script>alert('用户名已经存在，请更换用户名重新尝试！');location.href='?r=login/register'</script>");
+            }
+            $user=new User();
+            $user->user_name=$data['user_name'];
+            $user->user_pwd=md5($data['user_pwd']);
+            $user->user_type=$data['user_type'];
+            $user->user_phone=$data['user_phone'];
+            // var_dump($user);
+            // echo "<pre>";
+            // print_r($data);die;
+            $bloon=$user->save();
+            if($bloon){
+                $_SESSION['user_id']=$bloon;
+                $_SESSION['user_name']=$data['user_name'];
+                echo "<script>alert('注册成功，正在跳转至首页!');location.href='?r=show/index'</script>";
+            }else{
+                echo "<script>alert('注册失败!');location.href='?r=login/register'</script>";
+            }
+        }else{
+            $model=new User();
+            return $this->renderPartial('register',array('model'=>$model)); 
+        }
     }
 
 

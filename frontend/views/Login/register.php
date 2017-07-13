@@ -1,4 +1,8 @@
-﻿<!DOCTYPE HTML>
+﻿<?php 
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+?>
+<!DOCTYPE HTML>
 <html>
 <head>
 <script id="allmobilize" charset="utf-8" src="style/js/allmobilize.min.js"></script>
@@ -43,30 +47,33 @@ var youdao_conv_id = 271546;
         
     	<input type="hidden" id="resubmitToken" value="9b207beb1e014a93bc852b7ba450db27" />		
 		<div class="login_box">
-        	<form id="loginForm">
+        	<!-- <form id="loginForm"> -->
+        	<?php $form=ActiveForm::begin(array('action'=>array('login/register'),'id'=>'loginForm'));?>
         		<ul class="register_radio clearfix">
 		            <li>
 		            	找工作
-		              	<input type="radio" value="0" name="type" /> 
+		              	<input type="radio" value="0" name="user_type" /> 
 		            </li>
 		            <li>
-		           	           招人
-		              	<input type="radio" value="1" name="type" /> 
+		           	    招人
+		              	<input type="radio" value="1" name="user_type" /> 
 		            </li>
 		        </ul> 
-            	<input type="text" id="email" name="email" tabindex="1" placeholder="请输入常用邮箱地址" />
+		        <?=$form->field($model,'user_name')->textInput(array('id'=>'email','name'=>'user_name','tabindex'=>'1','placeholder'=>'请输入用户名'))?>
                 <span class="error" style="display:none;" id="beError"></span>
-                <input type="password" id="password" name="password" tabindex="2" placeholder="请输入密码" />
+                <?=$form->field($model,'user_pwd')->textInput(array('id'=>'password','name'=>'user_pwd','tabindex'=>'2','placeholder'=>'请输入密码'))?>
+                 <?=$form->field($model,'user_phone')->textInput(array('id'=>'email','name'=>'user_phone','tabindex'=>'3','placeholder'=>'请输入手机号'))?>
+                <span class="error" style="display:none;" id="beError"></span>
             	<label class="fl registerJianJu" for="checkbox">
-            		<input type="checkbox" id="checkbox" name="checkbox" checked  class="checkbox valid" />我已阅读并同意<a href="h/privacy.html" target="_blank">《拉勾用户协议》</a>
+            		<input type="checkbox" id="checkbox" checked  class="checkbox valid" value="1" />我已阅读并同意<a href="h/privacy.html" target="_blank">《拉勾用户协议》</a>
            		</label>
-                <input type="submit" id="submitLogin" value="注 &nbsp; &nbsp; 册" />
-                
-                <input type="hidden" id="callback" name="callback" value=""/>
+              <!--   <input type="submit" id="submitLogin" value="注 &nbsp; &nbsp; 册" /> -->
+                <?=Html::submitButton('注 &nbsp; &nbsp; 册',array('id'=>'submitLogin','disabled'=>false));?>
+                <!-- input type="hidden" id="callback" name="callback" value=""/>
                 <input type="hidden" id="authType" name="authType" value=""/>
                 <input type="hidden" id="signature" name="signature" value=""/>
-                <input type="hidden" id="timestamp" name="timestamp" value=""/>
-            </form>
+                <input type="hidden" id="timestamp" name="timestamp" value=""/> -->
+            <?php ActiveForm::end();?>
             <div class="login_right">
             	<div>已有拉勾帐号</div>
             	<a  href="?r=login/login"  class="registor_now">直接登录</a>
@@ -137,34 +144,34 @@ var youdao_conv_id = 271546;
 			    			label.insertAfter(element);
 			    		};	
 			    	},
-			    	submitHandler:function(form){
-			    		var type =$('input[type="radio"]:checked',form).val();
-			    		var email =$('#email').val();
-			    		var password =$('#password').val();
-			    		var resubmitToken = $('#resubmitToken').val();
+			    	// submitHandler:function(form){
+			    	// 	var type =$('input[type="radio"]:checked',form).val();
+			    	// 	var email =$('#email').val();
+			    	// 	var password =$('#password').val();
+			    	// 	var resubmitToken = $('#resubmitToken').val();
 			    		
-			    		var callback = $('#callback').val();
-			    		var authType = $('#authType').val();
-			    		var signature = $('#signature').val();
-			    		var timestamp = $('#timestamp').val();
+			    	// 	var callback = $('#callback').val();
+			    	// 	var authType = $('#authType').val();
+			    	// 	var signature = $('#signature').val();
+			    	// 	var timestamp = $('#timestamp').val();
 			    		
-			    		$(form).find(":submit").attr("disabled", true);
+			    	// 	$(form).find(":submit").attr("disabled", true);
 
-			            $.ajax({
-			            	type:'POST',
-			            	data: {email:email,password:password,type:type,resubmitToken:resubmitToken, callback:callback, authType:authType, signature:signature, timestamp:timestamp},
-			            	url:ctx+'/user/register.json',
-			            	dataType:'json'
-			            }).done(function(result) {
-		            		$('#resubmitToken').val(result.resubmitToken);
-			            	if(result.success){
-			            		window.location.href=result.content;			            		
-			            	}else{
-								$('#beError').text(result.msg).show();
-			            	}
-			            	$(form).find(":submit").attr("disabled", false);			           		
-			            });
-			        }  
+			     //        $.ajax({
+			     //        	type:'POST',
+			     //        	data: {email:email,password:password,type:type,resubmitToken:resubmitToken, callback:callback, authType:authType, signature:signature, timestamp:timestamp},
+			     //        	url:ctx+'/user/register.json',
+			     //        	dataType:'json'
+			     //        }).done(function(result) {
+		      //       		$('#resubmitToken').val(result.resubmitToken);
+			     //        	if(result.success){
+			     //        		window.location.href=result.content;			            		
+			     //        	}else{
+								// $('#beError').text(result.msg).show();
+			     //        	}
+			     //        	$(form).find(":submit").attr("disabled", false);			           		
+			     //        });
+			        //}  
 	    	});
     });
     </script>

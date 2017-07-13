@@ -79,7 +79,7 @@ $actionID = Yii::$app->controller->action->id;
                 <dd class="btm"><a href="subscribe.html">我应聘的职位</a></dd>
                 <dd><a href="?r=people/message_people">个人信息</a></dd>
                 <dd><a href="accountBind.html">账号安全</a></dd>
-                <dd class="logout"><a rel="nofollow" href="login.html">退出</a></dd>
+                <dd class="logout"><a rel="nofollow" href="?r=login/loginout">退出</a></dd>
             </dl>
 <!--                <div class="dn" id="noticeTip">-->
 <!--                    <span class="bot"></span>-->
