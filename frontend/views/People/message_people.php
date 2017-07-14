@@ -1,17 +1,8 @@
-﻿<?php
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-
-$form = ActiveForm::begin([
-    'id' => 'login-form',
-    'options' => ['class' => 'form-horizontal'],
-])
-
-?>
+﻿
   	<div id="previewWrapper">
         <div class="preview_header">
             <h1 title="jason的简历">个人信息</h1>
-                        	<a title="下载信息" class="" href="#">更改信息</a>
+                        	<a title="下载信息" class="" href="?r=people/people_one">更改信息</a>
                     </div><!--end .preview_header-->
 
         <div class="preview_content">
@@ -104,7 +95,7 @@ $form = ActiveForm::begin([
 	            </div><!--end #worksShow-->
 			        </div><!--end .preview_content-->
   	</div><!--end #previewWrapper-->
-<?php ActiveForm::end() ?>
+
 
 
 
