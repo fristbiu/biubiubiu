@@ -38,8 +38,9 @@ class PeopleController extends CommonController{
             //先接收传过来的数据组
             $data = Yii::$app->request->post();
             //如果图片上传成功就把上传成功的路径传给数据组
-            if($model->upload()){
-                $data['PersonalForm']['personal_photo'] = $model->imageFile->name;
+            $iimg=$model->upload();
+            if($iimg!=false){
+                $data['PersonalForm']['personal_photo'] = $iimg.$model->imageFile->name;
             }
             //进行数据添加入库
             $add = new Personal();

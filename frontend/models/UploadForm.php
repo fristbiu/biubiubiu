@@ -4,7 +4,7 @@ namespace frontend\models;
 use yii\base\Model;
 use yii\web\UploadedFile;
 
-class PersonalForm extends Model
+class UploadForm extends Model
 {
     /**
      * @var UploadedFile
@@ -37,12 +37,12 @@ class PersonalForm extends Model
     public function rules()
     {
         return [
-            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg',],
+            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
 //            [['personal_name','personal_photo','personal_introduce','imageFile'], 'string'],
 //            [['personal_address','personal_household'], 'string'],
 //
-//            [['personal_tel','personal_phone','personal_qq','personal_age','personal_sex','personal_experience'],'integer'],
-//            [['personal_jobtype','personal_jobstate', 'personal_dreamwork','personal_dreammoney','personal_process'],'integer'],
+//            [['personal_tel','personal_phone','personal_qq','personal_age','personal_sex','personal_experience'],'string'],
+//            [['personal_jobtype','personal_jobstate', 'personal_dreamwork','personal_dreammoney','personal_process'],'string'],
 //            [['user_id'],'required']
         ];
     }
@@ -50,9 +50,8 @@ class PersonalForm extends Model
     public function upload()
     {
         if ($this->validate()) {
-            $rand=time().rand(1111,9999);
-            $this->imageFile->saveAs('../../uploads/user_head/' .$rand. $this->imageFile->baseName . '.' . $this->imageFile->extension);
-            return $rand;
+            $this->imageFile->saveAs('../../uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            return true;
         } else {
             return false;
         }

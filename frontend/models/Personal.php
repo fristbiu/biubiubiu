@@ -25,6 +25,9 @@ class Personal extends ActiveRecord{
     }
     public function table_add($data,$id){
         $sql = $this->find()->where(['user_id'=>$id])->one();
+        if(!empty($sql->personal_photo)){
+            unlink('../../uploads/user_head/'.$sql->personal_photo);
+        }
         $sql->personal_name= $data['PersonalForm']['personal_name'];
         $sql->personal_photo= $data['PersonalForm']['personal_photo'];
         $sql->personal_tel= $data['PersonalForm']['personal_tel'];
