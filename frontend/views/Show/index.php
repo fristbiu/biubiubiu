@@ -1,4 +1,5 @@
-﻿	<div id="sidebar">
+﻿<script type="text/javascript" src="style/js/step6.js"></script>
+		<div id="sidebar">
 			<div class="mainNavs">
 
 									<?php echo $this->render('left_link')?>
