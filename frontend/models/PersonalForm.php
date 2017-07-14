@@ -37,7 +37,7 @@ class PersonalForm extends Model
     public function rules()
     {
         return [
-            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
+            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg',],
 //            [['personal_name','personal_photo','personal_introduce','imageFile'], 'string'],
 //            [['personal_address','personal_household'], 'string'],
 //
@@ -50,7 +50,7 @@ class PersonalForm extends Model
     public function upload()
     {
         if ($this->validate()) {
-            $this->imageFile->saveAs('../../uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            $this->imageFile->saveAs('../../uploads/user_head/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
             return true;
         } else {
             return false;
