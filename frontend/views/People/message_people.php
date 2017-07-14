@@ -36,9 +36,9 @@ use common\models\jobtype;
            			<div class="m_portrait">
                     	<div></div>
                         <?php if(empty($instory_data['personal_photo'])){?>
-                    	<img width="120" height="120" alt="jason" src="style/images/default_headpic.png">
+                    	<img width="120" height="120" alt="jason" src="./style/images/default_headpic.png">
                         <?php }else{?>
-                            <img width="120" height="120" alt="jason" src="uploads/user_head/<?= $instory_data['personal_photo'] ?>">
+                            <img width="120" height="120" alt="jason" src="../../uploads/user_head/<?= $instory_data['personal_photo'] ?>">
                         <?php }?>
                     </div>
                 </div><!--end .basicShow-->
