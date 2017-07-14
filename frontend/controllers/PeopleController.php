@@ -41,6 +41,7 @@ class PeopleController extends CommonController{
                 $data['PersonalForm']['personal_photo'] = $model->imageFile->name;
             }
             //进行数据添加入库
+
             $add = new Personal();
             //添加数据放到了model参数1：数据组   2：用户ID
             $if_add=$add->table_add($data, $_SESSION['user_id']);
