@@ -24,6 +24,7 @@ class LoginController extends CommonController{
     		$data=Yii::$app->request->post();
     		$userData=User::find()->where(array('user_name'=>Html::encode($data['user_name']),'user_pwd'=>md5(Html::encode($data['user_pwd']))))->asArray()->one();
     		if($userData){
+
                 $bloon=User::updateAll(array('last_time'=>date('Y-m-d H:i:s')),"user_id=:userid",array(':userid'=>$userData['user_id']));
     			$_SESSION['user_id']=$userData['user_id'];
     			$_SESSION['user_name']=$userData['user_name'];

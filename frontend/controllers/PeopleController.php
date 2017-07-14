@@ -14,8 +14,16 @@ class PeopleController extends CommonController{
     public $layout='common';
 //    个人信息
     public function actionMessage_people(){
-        $model = new PersonalForm();
-        return $this->render('message_people',['model'=>$model]);
+    	$user_id=$_SESSION['user_id'];
+    	$personal=Personal::find()->where("user_id=$user_id")->asArray()->one();
+    	//var_dump($personal);
+    	$personal['aa']=1;
+    	if(empty($personal)){
+    		return $this->render('emptyinfo');
+    	}else{
+    		$model = new PersonalForm();
+        	return $this->render('message_people',['model'=>$model]);
+    	}
     }
 
 

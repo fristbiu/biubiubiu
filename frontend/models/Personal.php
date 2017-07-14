@@ -7,7 +7,7 @@ namespace frontend\models;
  * Time: 9:55
  */
 use Yii;
-use Yii\db\ActiveRecord;
+use yii\db\ActiveRecord;
 class Personal extends ActiveRecord{
 //    public static function tableName(){
 //        return "Personal";
