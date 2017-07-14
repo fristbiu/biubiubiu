@@ -49,6 +49,7 @@ class PeopleController extends CommonController{
             }
         }else{
             //搜索历史数据
+
             $instory = Personal::find()->where(['user_id'=> $_SESSION['user_id']])->asArray()->one();
             $sort=json_decode(file_get_contents($this->xiangmu_url().'.\message.php'),true);
             return $this->render('people_one',['model'=>$model,'sort'=>$sort,'instory'=>$instory]);

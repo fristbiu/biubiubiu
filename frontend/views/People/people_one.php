@@ -24,7 +24,6 @@ $form = ActiveForm::begin([
 ]);
 
 ?>
-
   	<div id="previewWrapper">
         <div class="preview_header">
             <h1 title="jason的简历">更改</h1>
