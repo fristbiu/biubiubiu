@@ -42,9 +42,9 @@ class PeopleController extends CommonController{
             if($iimg!=false){
                 $data['PersonalForm']['personal_photo'] = $iimg.$model->imageFile->name;
             }
-            //进行数据添加入库
+            // 进行数据添加入库
             $add = new Personal();
-//            var_dump($data);die;
+            // var_dump($data);die;
             //添加数据放到了model参数1：数据组   2：用户ID
             $if_add=$add->table_add($data, $_SESSION['user_id']);
             if($if_add){
