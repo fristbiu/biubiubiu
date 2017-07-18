@@ -1,5 +1,6 @@
 ﻿<?php
 use common\models\jobtype;
+
 ?>
 <script type="text/javascript" src="style/js/step6.js"></script>
   	<div id="previewWrapper">
@@ -25,10 +26,10 @@ use common\models\jobtype;
                        <tr>
                            <td>学历:</td>
                            <td><?= $sort['process'][$instory_data['personal_process']]?></td>
-                           <td>电话:</td>
-                           <td><?= $instory_data['personal_tel']?></td>
-                           <td>固话:</td>
-                           <td><?= $instory_data['personal_phone']?></td>
+                           <td>户籍:</td>
+                           <td><?php echo $instory_data['personal_household']?></td>
+                           <td></td>
+                           <td></td>
 
                        </tr>
 
@@ -47,6 +48,7 @@ use common\models\jobtype;
 				            <div class="profile_box" id="expectJob">
 	                <h2>期望工作</h2>
 	                <div class="expectShow">
+                        希望做：
 	                	<?php
                         if(empty($instory_data['personal_dreamwork'])){
 
@@ -55,6 +57,8 @@ use common\models\jobtype;
                             echo $dreamwork['jobtype_name'];
                         }
                         ?>
+                        希望工资：<?php echo $sort['dream_money'][$instory_data['personal_dreammoney']]?><br>
+
 	                </div><!--end .expectShow-->
 	            </div><!--end #expectJob-->
 
@@ -64,23 +68,68 @@ use common\models\jobtype;
 	                <h2>工作经验</h2>
 	                <div class="projectShow">
 	                  <ul class="plist clearfix">
-	                  			            				            					            				<li class="noborder">
-	            					            					<div class="projectList">
-		            					<div class="f16 mb10">
-                                            <?php echo $sort['experience'][$instory_data['personal_experience']]?>
-		            					</div>
+                          <li class="noborder">
+                              <div class="projectList">
+                                  <div class="f16 mb10">
+                                      <?php echo $sort['experience'][$instory_data['personal_experience']]?>
+                                  </div>
 	                </div><!--end .projectShow-->
 	            </div><!--end #projectExperience-->
+                                </div>
+
+
+            <div class="profile_box" id="projectExperience">
+                <h2>家庭地址</h2>
+                <div class="projectShow">
+                    <ul class="plist clearfix">
+                        <li class="noborder">
+                            <div class="projectList">
+                                <div class="f16 mb10">
+
+                                    地址：<?php echo $instory_data['personal_address']?>
+                                </div>
+                            </div><!--end .projectShow-->
+                </div><!--end #projectExperience-->
+            </div>
+
+            <div class="profile_box" id="projectExperience">
+                <h2>工作信息</h2>
+                <div class="projectShow">
+                    <ul class="plist clearfix">
+                        <li class="noborder">
+                            <div class="projectList">
+                                <div class="f16 mb10">
+                                    目前状态是：<?php echo $sort['job_start'][$instory_data['personal_jobstate']]?>
+                                </div>
+                            </div><!--end .projectShow-->
+                </div><!--end #projectExperience-->
+            </div>
+
+
+            <div class="profile_box" id="selfDescription">
+                <h2>自我描述</h2>
+                <div class="descriptionShow">
+                    <?=$instory_data['personal_introduce']?>
+                </div><!--end .descriptionShow-->
+            </div><!--end #selfDescription-->
+
+            <div class="profile_box" id="projectExperience">
+                <h2>联系方式</h2>
+                <div class="projectShow">
+                    <ul class="plist clearfix">
+                        <li class="noborder">
+                            <div class="projectList">
+                                <div class="f16 mb10">
+                                    QQ：<?= $instory_data['personal_qq']?><br>
+                                    电话：<?= $instory_data['personal_tel']?><br>
+                                    固定电话：<?= $instory_data['personal_phone']?><br>
 
 
 
-				            <div class="profile_box" id="selfDescription">
-	                <h2>自我描述</h2>
-	                <div class="descriptionShow">
-	                <?=$instory_data['personal_introduce']?>
-	                </div><!--end .descriptionShow-->
-	            </div><!--end #selfDescription-->
-
+                                </div>
+                            </div><!--end .projectShow-->
+                </div><!--end #projectExperience-->
+            </div>
 
 			        </div><!--end .preview_content-->
   	</div><!--end #previewWrapper-->
