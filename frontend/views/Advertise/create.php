@@ -146,7 +146,7 @@
                                         <input type="radio" name="advertise_allow" value="0">否
                                     </td>
                                 </tr>
-                                <input type="hidden" name="bussiness_id" value="1">
+                                <input type="hidden" name="bussiness_id" value="<?=$bussiness_id?>">
                                 <tr>
                                 	<td width="25"></td>
                                 	<td colspan="2">
