@@ -16,7 +16,7 @@ class JianliController extends CommonController
 //    项目样式
     public $layout = 'common';
     //    我的所有简历
-    public function actionJianli_list(){
+    public function actionJianli_add(){
         //获取固定信息
         $data['type']=array(
            'experience'=>array(0=>'新手',1=>'实习生',2=>'1-2年',3=>'2-3年',4=>'3-4年',5=>'4-5年',6=>'5-6年',7=>'6-7年',8=>'7-8',9=>'9年以上'),
@@ -40,17 +40,85 @@ class JianliController extends CommonController
      * @access public 
      * @param  $_POST
      */
-    public function actionJianliadd()
+    public function actionJianli_addact()
     {
-        echo "1";
+        //接收数据
+        $data=$_POST;
+        $resume=new Resume();
+        $resume->resume_name=$data['resume_name'];
+        $resume->resume_qq=$data['resume_qq'];
+        $resume->resume_tel=$data['resume_tel'];
+        $resume->resume_age=$data['resume_age'];
+        $resume->resume_process=$data['resume_process'];
+        $resume->resume_experience=$data['resume_experience'];
+        $resume->resume_historywork=$data['resume_historywork'];
+        $resume->resume_dreamework=$data['resume_dreamework'];
+        $resume->resume_workaddress=$data['resume_workaddress'];
+        $resume->personal_id=$data['personal_id'];
+        $bloon=$resume->save();
+        if($bloon){
+            echo "简历添加成功。";
+        }else{
+            echo "简历添加失败！";
+        }
     }
     
-
-    //   单个简历
-    public function actionJianli_one(){
-        return $this->render('jianli_one');
+    /**
+     * 建立的列表
+     * @access public 
+     * @param 
+     */
+    public function actionJianli_list()
+    {
+        //获取个人信息
+        $user_id=$_SESSION['user_id'];
+        $userInfo=Personal::find()->where(array('user_id'=>$user_id))->asArray()->one();
+        $personal_id=$userInfo['personal_id'];
+        //获取数据
+        $resumeArr=Resume::find()->where(array('personal_id'=>$personal_id))->asArray()->all();
+        // echo "<pre>";
+        // print_r($resumeArr);die;
+        return $this->render('jianli_list',array('resumeArr'=>$resumeArr));
     }
 
+
+    /**
+     * 单个简历展示
+     * @access public
+     */
+    public function actionJianli_one()
+    {
+        $type=json_decode(file_get_contents($this->xiangmu_url().'.\message.php'),true);
+        $resume_id=Yii::$app->request->get('resume_id');
+        //获取个人信息
+        $user_id=$_SESSION['user_id'];
+        $userInfo=Personal::find()->where(array('user_id'=>$user_id))->asArray()->one();
+        //获取数据
+        $resumeArr=Resume::find()->where(array('resume_id'=>$resume_id))->asArray()->one();
+        //查询工作类型表
+        $sql="select * from jobtype";
+        $jobArr=Yii::$app->db->createCommand($sql)->queryAll();
+        $new=$this->addinfo($jobArr,$userInfo);
+        
+        $data['userInfo']=$new;
+        $data['resumeArr']=$resumeArr;
+        $data['type']=$type;
+        return $this->render('jianli_one',$data);
+    }
+
+    /**
+     * 处理将数据加入数组
+     * @access public
+     */
+    public function addinfo($jobArr,$userInfo)
+    {
+        foreach($jobArr as $val){
+            if($userInfo['personal_dreamwork']==$val['jobtype_id']){
+                $userInfo['dreamwork']=$val['jobtype_name'];
+            }
+        }
+        return $userInfo;
+    }
 
 
 

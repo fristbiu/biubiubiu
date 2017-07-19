@@ -12,6 +12,7 @@ class Resume extends ActiveRecord
 			'resume_tel'=>'请输入电话：',
 			'resume_age'=>'请输入年龄：',
 			'resume_process'=>'请输入您的学历：',
+			'resume_dreamework'=>'请输入您的梦想工作：',
 			'resume_experience'=>'请描述您的工作经验：',
 			'resume_historywork'=>'请描述您的历史工工作：',
 			'resume_workaddress'=>'输入您的历史工作地址：'

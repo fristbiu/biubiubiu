@@ -160,7 +160,7 @@ use yii\bootstrap\ActiveForm;
             		<input type="hidden" id="telVal" value="18644444444">
             		<input type="hidden" id="pageType" value="1"> 
             	</div><!--end #basicInfo-->
-<?php $form=ActiveForm::begin(array('action'=>'?r=jianli/jianliadd'));?>
+<?php $form=ActiveForm::begin(array('action'=>'?r=jianli/jianli_addact'));?>
             	<div class="profile_box" id="expectJob">
             		            		<span class="c_edit dn"></span>
             		<div class="expectShow dn">
@@ -168,14 +168,27 @@ use yii\bootstrap\ActiveForm;
             		</div><!--end .expectShow-->
             		<!--end .expectEdit-->
             		            		<div class="">
-			<?=$form->field($model,'resume_name')->textInput(array('name'=>'resume_name'));?>
-                  <?=$form->field($model,'resume_qq')->textInput(array('name'=>'resume_qq'));?>
-                  <?=$form->field($model,'resume_tel')->textInput(array('name'=>'resume_tel'));?>
-                  <?=$form->field($model,'resume_age')->textInput(array('name'=>'resume_age'));?>
-                  <?=$form->field($model,'resume_process')->textInput(array('name'=>'resume_process'));?>
-                  <?=$form->field($model,'resume_experience')->textInput(array('name'=>'resume_experience'));?>
-                  <?=$form->field($model,'resume_historywork')->textInput(array('name'=>'resume_historywork'));?>
-                  <?=$form->field($model,'resume_workaddress')->textInput(array('name'=>'resume_workaddress'));?>   
+		<?=$form->field($model,'resume_name')->textInput(array('name'=>'resume_name'));?>
+        <?=$form->field($model,'resume_qq')->textInput(array('name'=>'resume_qq'));?>
+        <?=$form->field($model,'resume_tel')->textInput(array('name'=>'resume_tel'));?>
+        <?=$form->field($model,'resume_age')->textInput(array('name'=>'resume_age'));?>
+        请选择您的学历：
+        <select name="resume_process" class="select">
+        	<?php foreach($type['process'] as $va){?>
+        		<option value=""><?=$va;?></option>
+        	<?php }?>
+        </select>
+        请选择您的工作经验：
+        <select name="resume_experience" class="select">
+        	<?php foreach($type['experience'] as $va){?>
+        		<option value=""><?=$va;?></option>
+        	<?php }?>
+        </select>
+        <br>
+        <?=$form->field($model,'resume_dreamework')->textInput(array('name'=>'resume_dreamework'));?>
+        <?=$form->field($model,'resume_historywork')->textInput(array('name'=>'resume_historywork'));?>
+        <?=$form->field($model,'resume_workaddress')->textInput(array('name'=>'resume_workaddress'));?>
+                  <input type="hidden" value="<?=$userInfo['personal_id'];?>" name="personal_id"> 
             		</div><!--end .expectAdd-->
             	</div>
             		
