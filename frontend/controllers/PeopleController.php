@@ -26,6 +26,7 @@ class PeopleController extends CommonController{
             $lase_add->save();
         }
         $sort=json_decode(file_get_contents($this->xiangmu_url().'.\message.php'),true);
+        $instory_data=Personal::find()->where("user_id=". $_SESSION['user_id'])->one();
         return $this->render('message_people',['instory_data'=>$instory_data,'sort'=>$sort]);
     }
     //个人信息更改
@@ -42,9 +43,9 @@ class PeopleController extends CommonController{
             if($iimg!=false){
                 $data['PersonalForm']['personal_photo'] = $iimg.$model->imageFile->name;
             }
-            // 进行数据添加入库
+            //进行数据添加入库
             $add = new Personal();
-            // var_dump($data);die;
+//            var_dump($data);die;
             //添加数据放到了model参数1：数据组   2：用户ID
             $if_add=$add->table_add($data, $_SESSION['user_id']);
             if($if_add){

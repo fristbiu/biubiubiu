@@ -18,8 +18,7 @@ for($i=1;$i<90;$i++){
 
 //form表单开始
 $form = ActiveForm::begin([
-    'options' => ['class' => 'form-horizontal','enctype' => 'multipart/form-data',
-    ],
+    'options' => ['class' => 'form-horizontal','enctype' => 'multipart/form-data'],
 //    'action' => 'index.php?r=people/people_one_add'
 ]);
 
@@ -47,7 +46,7 @@ $form = ActiveForm::begin([
                 <?= $form->field($model, 'personal_age')->dropDownList($for_age, ['prompt'=>'请选择','style'=>'width:120px'])->label('年龄') ?>
 
                 <?php $model->personal_sex = $instory['personal_sex']?>
-                <?= $form->field($model, 'personal_sex')->radioList(['1'=>'男','0'=>'女'])->label('性别') ?>
+                <?= $form->field($model, 'personal_sex')->radioList(['1'=>'男','0'=>'女'],['value'=>1])->label('性别') ?>
 
                 <?php $model->personal_experience = $instory['personal_experience']?>
                 <?= $form->field($model, 'personal_experience')->dropDownList($sort['experience'], ['prompt'=>'请选择','style'=>'width:120px'])->label('工作经验') ?>
