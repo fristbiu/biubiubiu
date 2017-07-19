@@ -37,7 +37,7 @@ $(function(){
 <body>
   	<div id="previewWrapper">
         <div class="preview_header">
-            <h1 title="jason的简历">jason的简历</h1>
+            <h1 title="jason的简历"><?=$userInfo['personal_name'];?>的简历</h1>
                         	<a title="下载简历" class="inline cboxElement" href="#downloadOnlineResume">下载该简历</a>
                     </div><!--end .preview_header-->
 
@@ -45,16 +45,17 @@ $(function(){
             <div class="profile_box" id="basicInfo">
                 <h2>基本信息</h2>
                 <div class="basicShow">
-                   <span>jason | 
-                    男 |                     大专 |                                       		3年工作经验
-            		            			| 广州<br>
-            			            				高级产品经理 · 上海辉硕科技有限公司 | 本科 · 北京大学<br>
-            			            			18644444444 | jason@qq.com<br>
+                   <span><?=$userInfo['personal_name'];?> | 
+                    <?php if($userInfo['personal_sex']==1){echo "男";}else{echo "女";}?> |                     <?=$type['process'][$userInfo['personal_process']];?>|                                    <?=$type['experience'][$userInfo['personal_experience']];?>
+            		            <br>
+            			            				<?=$resumeArr['resume_historywork'];?>  <?=$resumeArr['resume_workaddress'];?>| <?=$resumeArr['resume_process'];?><br>
+            			            			<?=$resumeArr['resume_tel'];?> | <?=$userInfo['personal_email']?><br>
             			
             		</span>
            			<div class="m_portrait">
                     	<div></div>
-                    	<img width="120" height="120" alt="jason" src="style/images/default_headpic.png">
+
+                    	<img width="120" height="120" alt="jason" src="<?php echo '../../uploads/user_head/'.$userInfo['personal_photo'];?>">
                     </div>
                 </div><!--end .basicShow-->
             </div><!--end #basicInfo-->
@@ -62,16 +63,14 @@ $(function(){
 				            <div class="profile_box" id="expectJob">
 	                <h2>期望工作</h2>
 	                <div class="expectShow">
-	                	广州，全职，月薪5k-10k，产品经理
+	                	<?=$userInfo['dreamwork'];?>，月薪<?=$type['dream_money'][$userInfo['personal_dreammoney']];?>，<?=$userInfo['dreamwork'];?>
 	                </div><!--end .expectShow-->
 	            </div><!--end #expectJob-->
 						
 				            <div class="profile_box" id="workExperience">
 	                <h2>工作经历</h2>
 	                <div class="experienceShow">
-	                  <ul class="wlist clearfix">
-	                  	                    	           				            				<li class="clear">
-            					           					<span class="c9">2013.06-至今</span>
+	                  <ul class="wlist clearfix"><span class="c9">2013.06-至今</span>
 	           					<div>
 	           						<img width="56" height="56" alt="上海辉硕科技有限公司" src="style/images/logo_default.png">
 	           						<h3>高级产品经理 </h3>
@@ -85,27 +84,19 @@ $(function(){
 				            <div class="profile_box" id="projectExperience">
 	                <h2>项目经验</h2>
 	                <div class="projectShow">
-	                  <ul class="plist clearfix">
-	                  			            				            					            				<li class="noborder">
-	            					            					<div class="projectList">
+	                  <ul class="plist clearfix"><div class="projectList">
 		            					<div class="f16 mb10">微盟，jason
-		            						<span class="c9">
-		            									            								（2013.06-至今）
-		            									            						</span>
-		            					</div>
-		            							            					<div class="dl1"></div>
-		            							            				</div>
+		            						<span class="c9"></div>
+		            	</div>
 	            				</li>
-	            				            				                      </ul>
-	                </div><!--end .projectShow-->
+	            		</div><!--end .projectShow-->
 	            </div><!--end #projectExperience-->
 						
 				            <div class="profile_box" id="educationalBackground">
 	                <h2>教育背景</h2>
 	                <div class="educationalShow">
 	                  <ul class="elist clearfix">
-	                  	                  	            				            				<li class="clear">
-            				            					<span class="c9">2004-2008</span>
+	                <span class="c9">2004-2008</span>
             					<div>
             						<h3>北京大学</h3>
             						<h4>黑客联盟，本科</h4>
@@ -126,11 +117,8 @@ $(function(){
 	                <h2>作品展示</h2>
 	                <div class="workShow">
 	                  <ul class="slist clearfix">
-	                  		                  	            				            				<li class="noborder">
-            				            					<div class="workList c7">
-	            						            							            							<div class="f16">网址：<a target="_blank" href="http://www.weimob.com">http://www.weimob.com</a></div>
-	            							            						            					<p>产品 </p>
-	            				</div>
+	                <div class="workList c7">
+	            </div>
             				</li>
             				           					                  </ul>
 	                </div><!--end .workShow-->

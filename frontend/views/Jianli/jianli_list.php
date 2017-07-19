@@ -4,34 +4,36 @@
             	<dl class="c_delivery">
                     <dt>
                         <h1><em></em>简历</h1>
-                        <a class="d_refresh" href="javascript:;">写简历</a>
+                        <a class="d_refresh" href="?r=jianli/jianli_add">写简历</a>
                     </dt>
                     <dd>
-
-                    	                        <form id="deliveryForm">
+                            
+                    	    <form id="deliveryForm">
                             <ul class="reset my_delivery">
-                               	                             	<li>
+                    <?php foreach($resumeArr as $val){?>
+                    <li>
                              		<div class="d_item">
-                             			 	                                    <h2 title="随便写">
-	                                        <a target="_blank" href="?r=jianli/jianli_one">
-	                                        	<em>随便写</em> 
-	                                        	<span>（1k-2k）</span>
+                    <a target="_blank" href="?r=jianli/jianli_one&resume_id=<?=$val['resume_id']?>">
+	                            <em><font color="red"><?=$val['resume_name']?>的简历-》</font></em> 
+	                            <span></span>
 	                                        	<!--  -->
 	                                    	</a>
+                                梦想工作：<?=$val['resume_dreamework'];?>
 	                                    </h2>
-	                                    		                                <div class="clear"></div>
-	                                   	<a title="公司名称" class="d_jobname" target="_blank" href="http://www.lagou.com/c/25927.html">
-	                                   		简历投递公司方向 <span>[上海]</span>
+	                        <a title="公司名称" class="d_jobname" target="_blank" href="http://www.lagou.com/c/25927.html">
+	                                   	<span></span>
 	                                    </a>
 	                                    <span class="d_time">2014-07-01 17:15</span>
 	                                    <div class="clear"></div>
 	                                    <div class="d_resume">
-	                                    	使用简历：
-	                                    	<span>在线简历</span>
+                                            年龄：<?=$val['resume_age']?>&nbsp;&nbsp;&nbsp;&nbsp;
+	                                    	工作经验：<?=$val['resume_experience'];?>&nbsp;&nbsp;&nbsp;&nbsp;
+                                            学历：<?=$val['resume_process'];?>
 	                                    </div>
                                         <a class="btn_showprogress" href="javascript:;">删除</a>
                                     </div>
-                                                                </li>
+                    </li>
+                    <?php }?>
                             	                            </ul>
 
                         </form>
