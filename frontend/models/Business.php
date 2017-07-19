@@ -20,6 +20,7 @@ class Business extends ActiveRecord{
             [['business_style','business_type','business_stage','business_desc','user_id','business_desc'],'integer']
         ];
     }
+//    数据添加
     public function array_add($data,$id){
         $sql = $this->find()->where(['user_id'=>$id])->one();
 //        $img = $sql->business_logo;

@@ -20,6 +20,7 @@ use common\models\jobtype;
                            <td>年龄:</td>
                            <td><?= $instory_data['personal_age']?>岁</td>
                            <td>性别:</td>
+                           <td><?php  if($instory_data['personal_sex']==1){echo "男";}else{echo "女";}?></td>
                        </tr>
                        <tr>
                            <td>学历:</td>

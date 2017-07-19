@@ -20,7 +20,6 @@ $for_age=array();
 for($i=1;$i<90;$i++){
     $for_age[]=$i."岁";
 }
-
 //form表单开始
 $form = ActiveForm::begin([
     'options' => ['class' => 'form-horizontal','enctype' => 'multipart/form-data',
@@ -34,17 +33,16 @@ $form = ActiveForm::begin([
                     </div><!--end .preview_header-->
 
         <div class="preview_content">
+<!--            数据添加或更改-->
             <div class="profile_box" id="basicInfo">
                 <?php $model->business_name=$data['business_name']?>
                 <?= $form->field($model, 'business_name', ['inputOptions' => ['style' =>'width:4' ] ])->textInput()->label('公司名称') ?>
                 <?php $model->business_product_name=$data['business_product_name']?>
                 <?= $form->field($model, 'business_product_name', ['inputOptions' => ['style' =>'width:4' ] ])->textInput()->label('生产名称') ?>
-                <?php if(empty($data['business_logo'])){?>
                 <?= $form->field($model, 'business_logo')->fileInput()->label('logo')?>
-                <?php }else{?>
-
-                    <?= $form->field($model, 'business_logo')->fileInput()->label('logo')?>
-                    <img src="../../uploads/business_logo/<?= $data['business_logo']?>">
+<!--                判断用户是否有照片-->
+                <?php if(!empty($data['business_logo'])){?>
+                    <img src="../../uploads/business_logo/<?= $data['business_logo']?>" width="100px">
                 <?php }?>
                 <?php $model->business_chairman_name=$data['business_chairman_name']?>
                 <?= $form->field($model, 'business_chairman_name', ['inputOptions' => ['style' =>'width:4' ] ])->textInput()->label('创始人姓名') ?>
