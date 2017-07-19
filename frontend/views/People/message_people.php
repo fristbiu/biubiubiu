@@ -1,6 +1,6 @@
 ﻿<?php
 use common\models\jobtype;
-
+//var_dump($sort);die;
 ?>
 <script type="text/javascript" src="style/js/step6.js"></script>
   	<div id="previewWrapper">
@@ -20,14 +20,12 @@ use common\models\jobtype;
                            <td>年龄:</td>
                            <td><?= $instory_data['personal_age']?>岁</td>
                            <td>性别:</td>
-                           <td><?php if($instory_data['personal_sex']==1){echo "♂";}else{echo "♀";}?></td>
-
                        </tr>
                        <tr>
                            <td>学历:</td>
-                           <td><?= $sort['process'][$instory_data['personal_process']]?></td>
+                           <td><?php if(!empty($instory_data['personal_process'])){ echo $sort['process'][$instory_data['personal_process']];}?></td>
                            <td>户籍:</td>
-                           <td><?php echo $instory_data['personal_household']?></td>
+                           <td><?php if(!empty($instory_data['personal_household'])){echo $instory_data['personal_household'];} ?></td>
                            <td></td>
                            <td></td>
 
@@ -57,7 +55,7 @@ use common\models\jobtype;
                             echo $dreamwork['jobtype_name'];
                         }
                         ?>
-                        希望工资：<?php echo $sort['dream_money'][$instory_data['personal_dreammoney']]?><br>
+                        希望工资：<?php if(!empty($instory_data['personal_dreammoney'])){ echo $sort['dream_money'][$instory_data['personal_dreammoney']];} ?><br>
 
 	                </div><!--end .expectShow-->
 	            </div><!--end #expectJob-->
@@ -71,7 +69,7 @@ use common\models\jobtype;
                           <li class="noborder">
                               <div class="projectList">
                                   <div class="f16 mb10">
-                                      <?php echo $sort['experience'][$instory_data['personal_experience']]?>
+                                      <?php if(!empty($instory_data['personal_experience'])){echo  $sort['experience'][$instory_data['personal_experience']];}?>
                                   </div>
 	                </div><!--end .projectShow-->
 	            </div><!--end #projectExperience-->
@@ -99,7 +97,7 @@ use common\models\jobtype;
                         <li class="noborder">
                             <div class="projectList">
                                 <div class="f16 mb10">
-                                    目前状态是：<?php echo $sort['job_start'][$instory_data['personal_jobstate']]?>
+                                    目前状态是：<?php if(!empty($instory_data['personal_jobstate'])){echo $sort['job_start'][$instory_data['personal_jobstate']];} ?>
                                 </div>
                             </div><!--end .projectShow-->
                 </div><!--end #projectExperience-->
