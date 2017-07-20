@@ -54,35 +54,64 @@ class AdvertiseController extends CommonController{
         }
         else
         {
-            //获取用户id
-            $user_id=$_SESSION['user_id'];
-            //查询公司id
-            $arr=Business::find()->where(['user_id'=>$user_id])->asArray()->one();
-            $bussiness_id=$arr['bussiness_id'];
-           // echo $bussiness_id;die;
-            //查询分类
-            $arr=Jobtype::find()->asArray()->all();
-            $data=$this->GetTree($arr,$pid=0);
-            //print_r($data);die;
-            return $this->render('create',['data'=>$data,'bussiness_id'=>$bussiness_id]);
+            if(empty($_SESSION['user_id']))
+            {
+                echo "<script>alert('请先登录');location.href='?r=login/login'</script>";
+            }
+            else
+            {
+                //获取用户id
+                $user_id=$_SESSION['user_id'];
+                //查询公司id
+                $arr=Business::find()->where(['user_id'=>$user_id])->asArray()->one();
+                $bussiness_id=$arr['bussiness_id'];
+               // echo $bussiness_id;die;
+                //查询分类
+                $arr=Jobtype::find()->asArray()->all();
+                $data=$this->GetTree($arr,$pid=0);
+                //print_r($data);die;
+                return $this->render('create',['data'=>$data,'bussiness_id'=>$bussiness_id]);
+            }
         } 
     }
     public function actionHave_refus(){
 
         return $this->render('have_refus');
     }
-//    发布的职位------发布---下线职位
+//    发布的职位------发布---有效职位
     public function actionPositions(){
         $arr=Advertise::find()->where(['status'=>1])->asArray()->all();
         $count=count($arr);
         //print_r($arr);die;
         return $this->render('positions',['arr'=>$arr,'count'=>$count]);
     }
+    //下线职位
+    public function actionPositions_off()
+    {
+        $arr=Advertise::find()->where(['status'=>0])->asArray()->all();
+        $count=count($arr);
+        //print_r($arr);die;
+        return $this->render('positions_off',['arr'=>$arr,'count'=>$count]);
+    }
     //招聘下线
     public function actionOffline(){
         $id=Yii::$app->request->get('id');
         $arr=Advertise::find()->where(['advertise_id'=>$id])->one();
         $arr->status=0;
+        $res=$arr->save();
+        if($res)
+        {
+            echo 1;
+        }
+        else
+        {
+            echo 0;
+        }
+    }
+    public function actionOnline(){
+        $id=Yii::$app->request->get('id');
+        $arr=Advertise::find()->where(['advertise_id'=>$id])->one();
+        $arr->status=1;
         $res=$arr->save();
         if($res)
         {
