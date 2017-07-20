@@ -36,6 +36,25 @@ class JianliController extends CommonController
     }
 
     /**
+     * 删除简历（ajax）
+     * @access public 
+     * @param  resume_id
+     */
+    public function actionDel()
+    {
+        //接收数据
+        $resume_id=Yii::$app->request->get('resume_id');
+        $resume=Resume::findOne($resume_id);
+        $bloon=$resume->delete();
+        if($bloon){
+            echo 1;
+        }else{
+            echo 0;
+        }
+        //echo $resume_id;
+    }
+
+    /**
      * 简历添加提交地址
      * @access public 
      * @param  $_POST
@@ -57,7 +76,7 @@ class JianliController extends CommonController
         $resume->personal_id=$data['personal_id'];
         $bloon=$resume->save();
         if($bloon){
-            echo "简历添加成功。";
+            $this->redirect('?r=jianli/jianli_list');
         }else{
             echo "简历添加失败！";
         }
@@ -70,6 +89,10 @@ class JianliController extends CommonController
      */
     public function actionJianli_list()
     {
+        if(!isset($_SESSION['user_id'])){
+            echo "<script>alert('此功能需要先登录！');location.href='?r=login/login'</script>";
+            die;
+        }
         //获取个人信息
         $user_id=$_SESSION['user_id'];
         $userInfo=Personal::find()->where(array('user_id'=>$user_id))->asArray()->one();
@@ -79,6 +102,20 @@ class JianliController extends CommonController
         // echo "<pre>";
         // print_r($resumeArr);die;
         return $this->render('jianli_list',array('resumeArr'=>$resumeArr));
+    }
+
+    /**
+     * 单个简历的编辑
+     * @access public
+     * @param  resume_id
+     */
+    public function actionEdit()
+    {
+        if(Yii::$app->request->post()){
+            echo "111";
+        }else{
+            return $this->render('jianli_edit');
+        }
     }
 
 

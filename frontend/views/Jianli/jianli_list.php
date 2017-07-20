@@ -11,7 +11,7 @@
                     	    <form id="deliveryForm">
                             <ul class="reset my_delivery">
                     <?php foreach($resumeArr as $val){?>
-                    <li>
+                    <li class="li<?=$val['resume_id']?>">
                              		<div class="d_item">
                     <a target="_blank" href="?r=jianli/jianli_one&resume_id=<?=$val['resume_id']?>">
 	                            <em><font color="red"><?=$val['resume_name']?>的简历-》</font></em> 
@@ -30,7 +30,8 @@
 	                                    	工作经验：<?=$val['resume_experience'];?>&nbsp;&nbsp;&nbsp;&nbsp;
                                             学历：<?=$val['resume_process'];?>
 	                                    </div>
-                                        <a class="btn_showprogress" href="javascript:;">删除</a>
+                <a href="?r=jianli/edit" class="" style="float:right; margin-top:5px;">编辑</a>
+                    <a class="btn_showprogress deljianli" data-id="<?=$val['resume_id']?>" href="javascript:;">删除</a>
                                     </div>
                     </li>
                     <?php }?>
@@ -143,6 +144,24 @@ $(function(){
 	      pageCount: 1,
 	      pageSize:  5
 	});
+});
+
+$('.deljianli').click(function(){
+    //获取ID
+    var resume_id=$(this).data('id');
+    //发送ajax进行删除
+    $.ajax({
+        type:'get',
+        url:'?r=jianli/del',
+        data:{resume_id:resume_id},
+        success:function(e){
+            if(e==1){
+                $('.li'+resume_id).remove();
+            }else{
+                alert('删除失败！')
+            }
+        }
+    });
 });
 </script>
 			<div class="clear"></div>

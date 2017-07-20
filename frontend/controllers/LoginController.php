@@ -74,8 +74,9 @@ class LoginController extends CommonController{
             // echo "<pre>";
             // print_r($data);die;
             $bloon=$user->save();
+            $user_id=$user->primaryKey;
             if($bloon){
-                $_SESSION['user_id']=$bloon;
+                $_SESSION['user_id']=$user_id;
                 $_SESSION['user_name']=$data['user_name'];
                 echo "<script>alert('注册成功，正在跳转至首页!');location.href='?r=show/index'</script>";
             }else{

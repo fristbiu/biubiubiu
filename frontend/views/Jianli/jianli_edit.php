@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html><head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <title>简历预览-我的简历-拉勾网-最专业的互联网招聘平台</title>
