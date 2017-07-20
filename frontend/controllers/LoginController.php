@@ -24,10 +24,10 @@ class LoginController extends CommonController{
     		$data=Yii::$app->request->post();
     		$userData=User::find()->where(array('user_name'=>Html::encode($data['user_name']),'user_pwd'=>md5(Html::encode($data['user_pwd']))))->asArray()->one();
     		if($userData){
-
                 $bloon=User::updateAll(array('last_time'=>date('Y-m-d H:i:s')),"user_id=:userid",array(':userid'=>$userData['user_id']));
     			$_SESSION['user_id']=$userData['user_id'];
     			$_SESSION['user_name']=$userData['user_name'];
+                $_SESSION['user_type']=$userData['user_type'];
     			echo "<script>alert('登录成功！');location.href='?r=show/index'</script>";
     		}else{
     			echo "<script>alert('账号或密码错误，请重新登录！');location.href='?r=login/login'</script>";
@@ -46,6 +46,7 @@ class LoginController extends CommonController{
         //删除session
         unset($_SESSION['user_id']);
         unset($_SESSION['user_name']);
+        unset($_SESSION['user_type']);
         echo "<script>alert('退出成功，正在返回主页。');location.href='?r=show/index'</script>";
     }
 
@@ -78,6 +79,7 @@ class LoginController extends CommonController{
             if($bloon){
                 $_SESSION['user_id']=$user_id;
                 $_SESSION['user_name']=$data['user_name'];
+                $_SESSION['user_type']=$data['user_type'];
                 echo "<script>alert('注册成功，正在跳转至首页!');location.href='?r=show/index'</script>";
             }else{
                 echo "<script>alert('注册失败!');location.href='?r=login/register'</script>";

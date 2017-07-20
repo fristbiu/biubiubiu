@@ -51,12 +51,15 @@ $actionID = Yii::$app->controller->action->id;
             </a>
             <ul class="reset" id="navheader">
                 <li class="<?php if($actionID=='index'){echo 'current'; }?>"><a href="?r=show/index">首页</a></li>
-
+                <?php if(isset($_SESSION['user_id'])){?>
+                <?php if($_SESSION['user_type']==0){?>
                 <li class="<?php if($actionID=='jianli_list'){echo 'current'; }?>"><a href="?r=jianli/jianli_list" rel="nofollow">简历</a></li>
-
+                <?php }else{?>
                 <li class="<?php if($actionID=='companylist'){echo 'current'; }?>"><a href="?r=business/companylist" >公司</a></li>
 <!--                用户不用显示-->
+                <?php }?>
                 <li class="<?php if($actionID=='create'){echo 'current'; }?>"><a href="?r=advertise/create" rel="nofollow">发布职位</a></li>
+                <?php }?>
             </ul>
             <?php if(empty($_SESSION['user_id'])){?>
             <ul class="loginTop">
