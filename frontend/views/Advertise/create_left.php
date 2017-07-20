@@ -24,7 +24,7 @@
             <a href="?r=advertise/positions">有效职位</a>
         </dd>
         <dd>
-            <a href="?r=advertise/positions">已下线职位</a>
+            <a href="?r=advertise/positions_off">已下线职位</a>
         </dd>
     </dl>
     <div class="subscribe_side mt20">
