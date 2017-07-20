@@ -35,36 +35,49 @@ $form = ActiveForm::begin([
         <div class="preview_content">
 <!--            数据添加或更改-->
             <div class="profile_box" id="basicInfo">
+                <?php if(!empty($data)){?>
                 <?php $model->business_name=$data['business_name']?>
-                <?= $form->field($model, 'business_name', ['inputOptions' => ['style' =>'width:4' ] ])->textInput()->label('公司名称') ?>
                 <?php $model->business_product_name=$data['business_product_name']?>
+                <?php $model->business_chairman_name=$data['business_chairman_name']?>
+                <?php $model->business_bright=$data['business_bright']?>
+                <?php $model->business_coordinate=$data['business_coordinate']?>
+                <?php $model->business_address=$data['business_address']?>
+                <?php $model->business_product_address=$data['business_product_address']?>
+                <?php $model->business_text=$data['business_text']?>
+                <?php $model->business_style=$data['business_style']?>
+                <?php $model->business_type=$data['business_type']?>
+                <?php $model->business_stage=$data['business_stage']?>
+                <?php $model->business_product_text=$data['business_product_text']?>
+                <?php }?>
+                <?= $form->field($model, 'business_name', ['inputOptions' => ['style' =>'width:4' ] ])->textInput()->label('公司名称') ?>
+
                 <?= $form->field($model, 'business_product_name', ['inputOptions' => ['style' =>'width:4' ] ])->textInput()->label('生产名称') ?>
                 <?= $form->field($model, 'business_logo')->fileInput()->label('logo')?>
 <!--                判断用户是否有照片-->
                 <?php if(!empty($data['business_logo'])){?>
                     <img src="../../uploads/business_logo/<?= $data['business_logo']?>" width="100px">
                 <?php }?>
-                <?php $model->business_chairman_name=$data['business_chairman_name']?>
+
                 <?= $form->field($model, 'business_chairman_name', ['inputOptions' => ['style' =>'width:4' ] ])->textInput()->label('创始人姓名') ?>
-                <?php $model->business_bright=$data['business_bright']?>
+
                 <?= $form->field($model, 'business_bright', ['inputOptions' => ['style' =>'width:4' ] ])->textInput()->label('名言') ?>
                 <p></p><p></p>
                 <div id="allmap"></div>
-                <?php $model->business_coordinate=$data['business_coordinate']?>
+
                 <?= $form->field($model, 'business_coordinate', ['inputOptions' => ['style' =>'width:4' ] ])->textInput()->label('公司百度坐标') ?>
-                <?php $model->business_address=$data['business_address']?>
+
                 <?= $form->field($model, 'business_address', ['inputOptions' => ['style' =>'width:4' ] ])->textInput()->label('地址') ?>
-                <?php $model->business_product_address=$data['business_product_address']?>
+
                 <?= $form->field($model, 'business_product_address', ['inputOptions' => ['style' =>'width:4' ] ])->textInput()->label('产品地址') ?>
-                <?php $model->business_text=$data['business_text']?>
+
                 <?= $form->field($model, 'business_text')->label("公司介绍")->textarea(['rows'=>4,'cols'=>5]) ?>
-                <?php $model->business_style=$data['business_style']?>
+
                 <?= $form->field($model, 'business_style')->dropDownList($type, ['prompt'=>'请选择','style'=>'width:120px'])->label('类型（领域）') ?>
-                <?php $model->business_type=$data['business_type']?>
+
                 <?= $form->field($model, 'business_type')->dropDownList($sort['firm_size'], ['prompt'=>'请选择','style'=>'width:120px'])->label('发展规模') ?>
-                <?php $model->business_stage=$data['business_stage']?>
+
                 <?= $form->field($model, 'business_stage')->dropDownList($sort['stage'], ['prompt'=>'请选择','style'=>'width:120px'])->label('发展阶段') ?>
-                <?php $model->business_product_text=$data['business_product_text']?>
+
                 <?= $form->field($model, 'business_product_text')->label("产品介绍")->textarea(['rows'=>4,'cols'=>5]) ?>
 
                 <div class="form-group">
@@ -79,13 +92,14 @@ $form = ActiveForm::begin([
 <script>
     // 百度地图API功能
     var map = new BMap.Map("allmap");
-    map.centerAndZoom("北京",12);
+    map.centerAndZoom("重庆",12);
     //单击获取点击的经纬度
+    map.addEventListener("click",function(e){
+        $('#business-business_coordinate').attr("value",e.point.lng + "," + e.point.lat)
+//        alert(e.point.lng + "," + e.point.lat);
+    });
     map.enableScrollWheelZoom();   //启用滚轮放大缩小，默认禁用
     map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
-    map.addEventListener("click",function(e){
-        $("#businessform-business_coordinate").val(e.point.lng + "," + e.point.lat)
-    });
 </script>
 
 

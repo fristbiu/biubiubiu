@@ -21,19 +21,10 @@ class BusinessController extends CommonController
         $data=$model->find()->where(['user_id'=>$_SESSION['user_id']])->one();
         //如果库中没有数据就添加一条user_id为用户ID的数据
         if(empty($data)){
-                $model->business_createtime= date('Y-m-d h-i-s');
-                $model->user_id = $_SESSION['user_id'];
-                if($model->save()){
                     //搜索出文件夹内的数据进行展示
                     $sort=json_decode(file_get_contents($this->xiangmu_url().'.\message.php'),true);
-                    //搜索用户之前填的数据
-                    $data = Business::find()->where(['user_id'=>$_SESSION['user_id']])->one();
+
                     return $this->render("company_add",['model'=>$model,'sort'=>$sort,'data'=>$data]);
-                }else{
-                    //让用户从新登陆获取ID
-                    header("Content-Type: text/html;charset=utf-8");
-                    echo "<script>alert('请从新登陆');location.href='index.php?r=login/login'</script>";
-                }
             }else{
             $sort=json_decode(file_get_contents($this->xiangmu_url().'.\message.php'),true);
                 return $this->render('companylist',['data'=>$data,'sort'=>$sort]);

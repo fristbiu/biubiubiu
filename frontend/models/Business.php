@@ -47,6 +47,7 @@ class Business extends ActiveRecord{
         $sql->business_product_text= $data['BusinessForm']['business_product_text'];
         $sql->business_desc=1;
         $sql->business_createtime= date('Y-m-d h-i-s');
+        $sql->user_id=$_SESSION['user_id'];
         if($sql->save()){
             return true;
         }else{
