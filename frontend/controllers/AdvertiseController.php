@@ -28,7 +28,6 @@ class AdvertiseController extends CommonController{
                 $data=Yii::$app->request->post();
                 $model=new Advertise();
                 $model->advertise_name=$data['advertise_name'];
-                $model->advertise_type=$data['advertise_type'];
                 $model->advertise_process=$data['advertise_process'];
                 $model->advertise_ask=$data['advertise_ask'];
                 $model->advertise_experience=$data['advertise_experience'];

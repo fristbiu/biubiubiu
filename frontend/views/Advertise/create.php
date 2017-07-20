@@ -45,14 +45,6 @@
                                     	<input type="text" placeholder="请输入职位名称，如：产品经理" value="" name="advertise_name" id="positionName">
                                     	                                    </td>
                                 </tr>
-                            	<tr>
-                                	<td></td>
-                                	<td>发布人</td>
-                                	<td>
-                                    	<input type="radio" name="advertise_type" value="0">个人	
-                                        <input type="radio" name="advertise_type" value="1">企业  
-                                    </td>
-                                </tr>
                             </tbody></table>
 
                             <table class="btm">
