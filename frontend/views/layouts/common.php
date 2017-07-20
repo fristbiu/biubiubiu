@@ -57,8 +57,9 @@ $actionID = Yii::$app->controller->action->id;
                 <?php }else{?>
                 <li class="<?php if($actionID=='companylist'){echo 'current'; }?>"><a href="?r=business/companylist" >公司</a></li>
 <!--                用户不用显示-->
-                <?php }?>
-                <li class="<?php if($actionID=='create'){echo 'current'; }?>"><a href="?r=advertise/create" rel="nofollow">发布职位</a></li>
+                
+                
+                <li class="<?php if($actionID=='create'){echo 'current'; }?>"><a href="?r=advertise/create" rel="nofollow">发布职位</a></li><?php }?>
                 <?php }?>
             </ul>
             <?php if(empty($_SESSION['user_id'])){?>
