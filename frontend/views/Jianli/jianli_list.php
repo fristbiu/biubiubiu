@@ -30,7 +30,7 @@
 	                                    	工作经验：<?=$val['resume_experience'];?>&nbsp;&nbsp;&nbsp;&nbsp;
                                             学历：<?=$val['resume_process'];?>
 	                                    </div>
-                <a href="?r=jianli/edit" class="" style="float:right; margin-top:5px;">编辑</a>
+                <a href="?r=jianli/edit&resume_id=<?=$val['resume_id']?>" class="" style="float:right; margin-top:5px;">编辑</a>
                     <a class="btn_showprogress deljianli" data-id="<?=$val['resume_id']?>" href="javascript:;">删除</a>
                                     </div>
                     </li>

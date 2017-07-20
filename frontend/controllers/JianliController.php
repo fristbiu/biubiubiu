@@ -63,7 +63,11 @@ class JianliController extends CommonController
     {
         //接收数据
         $data=$_POST;
-        $resume=new Resume();
+        if(isset($data['resume_id'])){
+            $resume=Resume::findOne($data['resume_id']);
+        }else{
+            $resume=new Resume();
+        }
         $resume->resume_name=$data['resume_name'];
         $resume->resume_qq=$data['resume_qq'];
         $resume->resume_tel=$data['resume_tel'];
@@ -112,9 +116,29 @@ class JianliController extends CommonController
     public function actionEdit()
     {
         if(Yii::$app->request->post()){
-            echo "111";
+            //接收数据
+            $data=Yii::$app->request->post();
+            echo "<pre>";
+            print_r($data);
         }else{
-            return $this->render('jianli_edit');
+            $type=json_decode(file_get_contents($this->xiangmu_url().'.\message.php'),true);
+            $resume_id=Yii::$app->request->get('resume_id');
+            //获取个人信息
+            $user_id=$_SESSION['user_id'];
+            $userInfo=Personal::find()->where(array('user_id'=>$user_id))->asArray()->one();
+            //获取数据
+            $resumeArr=Resume::find()->where(array('resume_id'=>$resume_id))->asArray()->one();
+            //查询工作类型表
+            $sql="select * from jobtype";
+            $jobArr=Yii::$app->db->createCommand($sql)->queryAll();
+            $new=$this->addinfo($jobArr,$userInfo);
+            
+            $data['userInfo']=$new;
+            $data['resumeArr']=$resumeArr;
+            $data['type']=$type;
+            $model=new Resume();
+            $data['model']=$model;
+            return $this->render('jianli_edit',$data);
         }
     }
 
