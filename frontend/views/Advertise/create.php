@@ -48,37 +48,27 @@
                             </tbody></table>
 
                             <table class="btm">
-                            	<tbody><tr>
+                            	<tbody>
+                                <tr>
+                                    <td width="25"><span class="redstar">*</span></td>
+                                    <td width="85">月薪</td>
+                                    <td>
+                                        <select name="advertise_money" class="select">
+                                        <?php  foreach($type['money'] as $val){?>
+                                                <option value="<?=$val;?>"><?=$val;?></option>
+                                        <?php }?>
+                                         </select>
+                                    </td>
+                                </tr>
+                                <tr>
                                 	<td width="25"><span class="redstar">*</span></td>
                                 	<td width="85">工作经验</td>
                                 	<td>
-                                    	<input type="hidden" id="experience" value="" name="advertise_experience">
-                                        <input type="button" value="请选择工作经验" id="select_experience" name="advertise_experience" class="selectr selectr_380">                                      
-                                        <div class="boxUpDown boxUpDown_380 dn" id="box_experience" style="display: none;">
-                                            <ul>
-                                                                                                    <li>
-                                                        不限
-                                                    </li>
-                                        	 	                                                    <li>
-                                                        应届毕业生
-                                                    </li>
-                                        	 	                                                    <li>
-                                                        1年以下
-                                                    </li>
-                                        	 	                                                    <li>
-                                                        1-3年
-                                                    </li>
-                                        	 	                                                    <li>
-                                                        3-5年
-                                                    </li>
-                                        	 	                                                    <li>
-                                                        5-10年
-                                                    </li>
-                                        	 	                                                    <li>
-                                                        10年以上
-                                                    </li>
-                                        	 	                                            </ul>
-                                    	</div>
+                                    	<select name="advertise_experience" class="select">
+                                        <?php  foreach($type['experience'] as $val){?>
+                                                <option value="<?=$val;?>"><?=$val;?></option>
+                                        <?php }?>
+                                         </select>
                                     </td>
                                 </tr>
                             	<tr>
@@ -86,27 +76,11 @@
                                 	<td>学历要求</td>
                                     <!--<h3><span>(最高月薪不能大于最低月薪的2倍)</span></h3> -->
                                 	<td>
-                                    	<input type="hidden" id="education" value="" name="advertise_process">
-                                        <input type="button" value="请选择学历要求" id="select_education" name="advertise_process" class="selectr selectr_380">                                      
-                                        <div class="boxUpDown boxUpDown_380 dn" id="box_education" style="display: none;">
-                                            <ul>
-                                                                                                    <li>
-                                                        不限
-                                                    </li>
-                                        	 	                                                    <li>
-                                                        大专
-                                                    </li>
-                                        	 	                                                    <li>
-                                                        本科
-                                                    </li>
-                                        	 	                                                    <li>
-                                                        硕士
-                                                    </li>
-                                        	 	                                                    <li>
-                                                        博士
-                                                    </li>
-                                        	 	                                            </ul>
-                                    	</div>
+                                        <select name="advertise_process" class="select">
+                                        <?php  foreach($type['education'] as $val){?>
+                                                <option value="<?=$val;?>"><?=$val;?></option>
+                                        <?php }?>
+                                         </select>
                                     </td>
                                 </tr>
                             </tbody></table>

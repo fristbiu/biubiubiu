@@ -26,9 +26,11 @@ class AdvertiseController extends CommonController{
             if($arr['business_success']==1)
             {
                 $data=Yii::$app->request->post();
+               // print_r($data);die;
                 $model=new Advertise();
                 $model->advertise_name=$data['advertise_name'];
                 $model->advertise_process=$data['advertise_process'];
+                $model->advertise_money=$data['advertise_money'];
                 $model->advertise_ask=$data['advertise_ask'];
                 $model->advertise_experience=$data['advertise_experience'];
                 $model->advertise_star=$data['advertise_star'];
@@ -65,11 +67,17 @@ class AdvertiseController extends CommonController{
                 $arr=Business::find()->where(['user_id'=>$user_id])->asArray()->one();
                 $bussiness_id=$arr['bussiness_id'];
                // echo $bussiness_id;die;
+               // 月薪
+               $type=array( 
+                'money'=>array('5K以下','5K-10K','10K-15K','15K-20K','25K-30K','30K-35K','35K-40K'),
+                'experience'=>array('不限','应届毕业生','1年以下','1-3年','3-5年','5-10年','10年以上'),
+                'education'=>array('不限','大专','本科','硕士','博士'),
+                );
                 //查询分类
                 $arr=Jobtype::find()->asArray()->all();
                 $data=$this->GetTree($arr,$pid=0);
                 //print_r($data);die;
-                return $this->render('create',['data'=>$data,'bussiness_id'=>$bussiness_id]);
+                return $this->render('create',['data'=>$data,'bussiness_id'=>$bussiness_id,'type'=>$type]);
             }
         } 
     }
