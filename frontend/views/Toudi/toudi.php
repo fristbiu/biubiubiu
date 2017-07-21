@@ -20,10 +20,10 @@ var youdao_conv_id = 271546;
             <div class="content_l">
             	                <dl class="job_detail">
                     <dt>
-                        <h1 title="产品经理">
+                        <h1 title="<?=$arr['advertise_name']?>">
                             <em></em>
-                                                        	<div>广州百田招聘</div>
-                           	                           	产品经理
+                                                        	<div><?=$arr['business_name']?></div>
+                           	                           	<?=$arr['advertise_name']?>
                         </h1>
                         
                                                	
@@ -36,22 +36,26 @@ var youdao_conv_id = 271546;
                        	</div>
                        	                    </dt>
                     <dd class="job_request">
-                    	<span class="red">8k-15k</span>
-                       	<span>广州</span> 
-                       	<span>经验1-3年 </span>
-                       	<span> 本科及以上</span> 
-                       	<span>全职</span><br>
-                      	  职位诱惑 : 上市公司，快速发展空间，产品的话语权
-                      	<div>发布时间：1天前发布</div>
+                    	<span class="red"><?=$arr['advertise_money']?></span>
+                       	<span><?=$arr['business_address']?></span> 
+                       	<span><?=$arr['advertise_experience']?></span>
+                       	<span><?=$arr['advertise_process']?></span>
+                       	<div>活动时间:<?=$arr['advertise_star']?>-<?=$arr['advertise_end']?></div> 
+                      	<div>发布时间：<?=$arr['addtime']?></div>
                     </dd>
                     <dd class="job_bt">
                         <h3 class="description">职位描述</h3>
-                        <p><strong>工作职责：</strong>&nbsp;<br>1、挖掘公司互联网产品现有和预期的市场需求；&nbsp; <br>2、负责组织公司互联网新产品开发和产品改进；&nbsp; <br>3、发掘收集竞争对手信息，进行竞争对手分析，制定应对战略；&nbsp; <br>4、在产品运营中倾听用户声音，了解用户潜在需求，并在产品改进中满足；&nbsp; <br>5、在产品运营中整合已有的产品功能、用户资源、推广资源，策划运营活动；&nbsp; <br>6、与市场、运营、UI、开发、测试、公关、法务、客服等人员紧密合作，实现产品目标。 <br>&nbsp; <br> <strong>任职要求：</strong> <br>1、本科及以上学历，英语四级以上，专业不限；&nbsp; <br>2、对互联网产品有敏锐的直觉和良好的市场分析能力；&nbsp; <br>3、有严密的逻辑分析能力，有良好的沟通协作能力；&nbsp; <br>4、有很强的责任心、学习能力、文字表达能力；&nbsp; <br>5、具有很强的团队协助精神，善于总结和分享经验；&nbsp; <br>6、具有互联网产品规划和产品设计经验者优先。</p> 
-<p>&nbsp;</p> 
-<p><strong>其他：&nbsp;</strong></p> 
-<p>1、五险一金、商业综合医疗保险，节日慰问金、生日礼金、结婚礼金、年度体检、旅游；</p> 
-<p>2、工作时间为5天工作制，享受国家法定节假日、带薪年假7天、带薪病假、产假（陪产假）、婚假、丧假等；</p> 
-<p>3、每周定期举办足球、羽毛球、篮球及员工深度互动等文体活动。</p>
+                        <?php foreach($arr['ask1'] as $k => $v) {?>
+                        <p>
+                        	<?=$v?><br>
+                        </p>
+                        <?php }?>
+                        <br>
+                        <?php foreach($arr['ask2'] as $k => $v) {?>
+                        <p>
+                        	<?=$v?><br>
+                        </p>
+                        <?php }?>
                     </dd>
                      
                                         	<!-- 用户是否激活 0-否；1-是 -->

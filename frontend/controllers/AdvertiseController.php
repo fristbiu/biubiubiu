@@ -38,6 +38,7 @@ class AdvertiseController extends CommonController{
                 $model->advertise_allow=$data['advertise_allow'];
                 $model->jobtype_name=$data['jobtype_name'];
                 $model->bussiness_id=$data['bussiness_id'];
+                $model->addtime=date('Y-m-d H:i:s');
                 $res=$model->save();
                 if($res)
                 {
