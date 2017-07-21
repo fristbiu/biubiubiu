@@ -3,7 +3,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\jobtype;
 use frontend\models\Personal;
-
+//var_dump($sort);die;
 //工作类型查询库
 $jobtype=jobtype::find()->where('parent_id>0')->asArray()->all();
 $type=array();
@@ -69,7 +69,7 @@ $form = ActiveForm::begin([
                 <?= $form->field($model, 'personal_dreamwork')->dropDownList($type, ['prompt'=>'请选择','style'=>'width:120px'])->label('希望工作') ?>
 
                 <?php $model->personal_dreammoney = $instory['personal_dreammoney']?>
-                <?= $form->field($model, 'personal_dreammoney')->dropDownList($sort['firm_size'], ['prompt'=>'请选择','style'=>'width:120px'])->label('希望工资') ?>
+                <?= $form->field($model, 'personal_dreammoney')->dropDownList($sort['dream_money'], ['prompt'=>'请选择','style'=>'width:120px'])->label('希望工资') ?>
 
                 <?php $model->personal_introduce = $instory['personal_introduce']?>
                 <?= $form->field($model, 'personal_introduce')->label("个人介绍")->textarea(['rows'=>4,'cols'=>5]) ?>

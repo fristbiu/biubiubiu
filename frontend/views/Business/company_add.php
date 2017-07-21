@@ -92,7 +92,7 @@ $form = ActiveForm::begin([
 <script>
     // 百度地图API功能
     var map = new BMap.Map("allmap");
-    map.centerAndZoom("北京",12);
+    map.centerAndZoom("郑州",5);
     //单击获取点击的经纬度
     map.addEventListener("click",function(e){
         $('#business-business_coordinate').attr("value",e.point.lng + "," + e.point.lat)
