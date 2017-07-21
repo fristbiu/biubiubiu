@@ -170,7 +170,7 @@
                         &nbsp;
                         <span class="c9">[北京]</span>
                         </div>
-                        <span><em class="c7">月薪： </em>8k-12k</span>
+                        <span><em class="c7">月薪： </em><?=$val['advertise_money'];?></span>
                         <span><em class="c7">经验：</em><?=$val['advertise_experience']?></span>
                         <span><em class="c7">最低学历：</em> <?=$val['advertise_process']?></span>
                         <br />
