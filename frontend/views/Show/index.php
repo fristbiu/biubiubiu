@@ -166,11 +166,11 @@
 	            	<li>
 	            	<div class="hot_pos_l">
                     	<div class="mb10">
-                        <a href="h/jobs/120897.html" target="_blank"><?=$val['advertise_name']?></a> 
+                        <a href="?r=toudi/toudi&id=<?=$val['advertise_id']?>" target="_blank"><?=$val['advertise_name']?></a> 
                         &nbsp;
                         <span class="c9">[北京]</span>
                         </div>
-                        <span><em class="c7">月薪： </em><?=$val['advertise_money'];?></span>
+                        <span><em class="c7">月薪： </em>8k-12k</span>
                         <span><em class="c7">经验：</em><?=$val['advertise_experience']?></span>
                         <span><em class="c7">最低学历：</em> <?=$val['advertise_process']?></span>
                         <br />
@@ -180,7 +180,7 @@
                         <!-- <a  class="wb">分享到微博</a> -->
                     </div>
                 	<div class="hot_pos_r">
-                    	<div class="mb10"><a href="h/c/8143.html" target="_blank"><?=$val['bussiness']['business_name'];?></a></div>
+                    	<div class="mb10"><a href="?r=business/businesslist&id=<?=$val['bussiness']['bussiness_id']?>" target="_blank"><?=$val['bussiness']['business_name'];?></a></div>
                         <span><em class="c7">领域：</em> <?=$val['bussiness']['business_style'];?></span>
                         <span><em class="c7">创始人：</em><?=$val['bussiness']['business_chairman_name']?></span>
                         <br />

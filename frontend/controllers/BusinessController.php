@@ -31,6 +31,13 @@ class BusinessController extends CommonController
         }
 
     }
+    public function actionBusinesslist()
+    {
+        $id=Yii::$app->request->get('id');
+        $data=Business::find()->where(['bussiness_id'=>$id])->one();
+        $sort=json_decode(file_get_contents($this->xiangmu_url().'.\message.php'),true);
+        return $this->render('companylist',['data'=>$data,'sort'=>$sort]);
+    }
     //公司信息添加
     public function actionCompany_add(){
         $model = new BusinessForm();
