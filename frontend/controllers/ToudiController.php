@@ -29,10 +29,14 @@ class ToudiController extends CommonController
     	$bid=$arr['bussiness_id'];
     	//查询公司名称
     	$business=Business::find()->where(['bussiness_id'=>$bid])->asArray()->one();
-    	$arr['business_name']=$business['business_name'];
-    	$arr['business_address']=$business['business_address'];
+        //print_r($business);die;
+        $str=explode(',',$business['business_coordinate']);
+        $lng=$str[0];
+        $lat=$str[1];
+    	// $arr['business_name']=$business['business_name'];
+    	// $arr['business_address']=$business['business_address'];
     	//print_r($arr);die;
-        return $this->render('toudi',['arr'=>$arr]);
+        return $this->render('toudi',['arr'=>$arr,'business'=>$business,'lng'=>$lng,'lat'=>$lat]);
     }
 
 }
