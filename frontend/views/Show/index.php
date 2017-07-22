@@ -264,8 +264,8 @@ use yii\helpers\Html;
                 async: false,
                 dataType:"json",
                 success: function(msg){
-                    console.log(msg)
-//                   html(msg)
+//                    console.log(msg)
+                   html(msg)
                 }
             });
         })
