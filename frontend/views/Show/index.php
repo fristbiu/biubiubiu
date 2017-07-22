@@ -14,7 +14,7 @@ use yii\helpers\Html;
 
         <ul id="searchType">
         	        	<li data-searchtype="1" class="type_selected">职位</li>
-        	<li data-searchtype="4">公司</li>
+        	<li data-searchtype="2">公司</li>
         	        </ul>
         <div class="searchtype_arrow"></div>
             <input type="text" id="search_input" name = "kd"  tabindex="1" value=""  placeholder="请输入职位名称，如：产品经理"  />
@@ -166,12 +166,46 @@ use yii\helpers\Html;
 	            <?php foreach($newArr as $val){?>
 	            	<li>
 
+<<<<<<< HEAD
 	            	<div class="hot_pos_l">
                     	<div class="mb10">
                         <a href="?r=toudi/toudi&id=<?=$val['advertise_id']?>" target="_blank"><?=$val['advertise_name']?></a> 
                         &nbsp;
                         <span class="c9">[北京]</span>
                         </div>
+=======
+                        <div class="hot_pos_l">
+                            <div class="mb10">
+                                <a href="h/jobs/120897.html" target="_blank"><?=$val['advertise_name']?></a>
+                                &nbsp;
+                                <span class="c9">[北京]</span>
+                            </div>
+                            <span><em class="c7">月薪： </em><?=$val['advertise_money'];?></span>
+                            <span><em class="c7">经验：</em><?=$val['advertise_experience']?></span>
+                            <span><em class="c7">最低学历：</em> <?=$val['advertise_process']?></span>
+                            <br />
+                            <span><em class="c7">职位诱惑：</em>薪资高、发展空间大、前景优</span>
+                            <br />
+                            <span><?=$val['advertise_star']?>发布</span>
+                            <!-- <a  class="wb">分享到微博</a> -->
+                        </div>
+                        <div class="hot_pos_r">
+                            <div class="mb10"><a href="h/c/8143.html" target="_blank"><?=$val['bussiness']['business_name'];?></a></div>
+                            <span><em class="c7">领域：</em> <?=$val['bussiness']['business_style'];?></span>
+                            <span><em class="c7">创始人：</em><?=$val['bussiness']['business_chairman_name']?></span>
+                            <br />
+                            <span> <em class="c7">阶段： </em><?=$val['bussiness']['business_stage']?></span>
+                            <span> <em class="c7">规模：<?=$val['bussiness']['business_type'];?></em></span>
+                            <ul class="companyTags reset"><li>绩效奖金</li><li>五险一金</li><li>带薪年假</li></ul>
+                        </div></li>
+
+	            	<div class="hot_pos_l">
+                    	<div class="mb10">
+                        <a href="?r=toudi/toudi&id=<?=$val['advertise_id']?>" target="_blank"><?=$val['advertise_name']?></a> 
+                        &nbsp;
+                        <span class="c9">[北京]</span>
+                        </div>
+>>>>>>> 7637bb8cd613fa5e27692f7de17e09e23224b0f3
                         <span><em class="c7">月薪： </em><?=$val['advertise_money'];?></span>
                         <span><em class="c7">经验：</em><?=$val['advertise_experience']?></span>
                         <span><em class="c7">最低学历：</em> <?=$val['advertise_process']?></span>
@@ -239,8 +273,13 @@ use yii\helpers\Html;
                 async: false,
                 dataType:"json",
                 success: function(msg){
+<<<<<<< HEAD
                     console.log(msg)
 //                   html(msg)
+=======
+//                    console.log(msg)
+                   html(msg)
+>>>>>>> 7637bb8cd613fa5e27692f7de17e09e23224b0f3
                 }
             });
         })
