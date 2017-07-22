@@ -22,21 +22,14 @@ class BusinessController extends CommonController
         //如果库中没有数据就添加一条user_id为用户ID的数据
         if(empty($data)){
                     //搜索出文件夹内的数据进行展示
-                    $sort=json_decode(file_get_contents($this->xiangmu_url().'.\message.php'),true);
-
-                    return $this->render("company_add",['model'=>$model,'sort'=>$sort,'data'=>$data]);
+//                    $sort=json_decode(file_get_contents($this->xiangmu_url().'.\message.php'),true);
+//                    return $this->render("company_add",['model'=>$model,'sort'=>$sort,'data'=>$data]);
+            return $this->actionCompany_add();
             }else{
             $sort=json_decode(file_get_contents($this->xiangmu_url().'.\message.php'),true);
                 return $this->render('companylist',['data'=>$data,'sort'=>$sort]);
         }
 
-    }
-    public function actionBusinesslist()
-    {
-        $id=Yii::$app->request->get('id');
-        $data=Business::find()->where(['bussiness_id'=>$id])->one();
-        $sort=json_decode(file_get_contents($this->xiangmu_url().'.\message.php'),true);
-        return $this->render('companylist',['data'=>$data,'sort'=>$sort]);
     }
     //公司信息添加
     public function actionCompany_add(){
@@ -54,6 +47,7 @@ class BusinessController extends CommonController
                 //调用models层进行数据添加并返回一个是否成功的浮点型
                 $sql = new Business();
                 $end=$sql->array_add($array_data,$_SESSION['user_id']);
+
                 if($end){
                     echo "<script>alert('成功');location.href='index.php?r=business/companylist'</script>";
                 }else{

@@ -9,6 +9,7 @@ use yii\db\ActiveRecord;
  * Time: 11:03
  */
 class Business extends ActiveRecord{
+    public $business_name;
     public static function tableName(){
         return "business";
     }
@@ -23,7 +24,9 @@ class Business extends ActiveRecord{
 //    数据添加
     public function array_add($data,$id){
         $sql = $this->find()->where(['user_id'=>$id])->one();
-//        $img = $sql->business_logo;
+        if(empty($sql)){
+           $sql =new Business();
+        }
         //当数据库没图片而接收到图片则进行数据入库
         if(empty($sql->business_logo)&& !empty($data['BusinessForm']['business_logo'])){
             $sql->business_logo=  $data['BusinessForm']['business_logo'];
@@ -33,6 +36,7 @@ class Business extends ActiveRecord{
       @      unlink('../../uploads/business_logo/'.$sql->business_logo);
             $sql->business_logo=  $data['BusinessForm']['business_logo'];
         }
+        //        var_dump($data);die;
         $sql->business_name= $data['BusinessForm']['business_name'];
         $sql->business_product_name= $data['BusinessForm']['business_product_name'];
         $sql->business_chairman_name= $data['BusinessForm']['business_chairman_name'];
