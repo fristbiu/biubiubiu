@@ -1,4 +1,7 @@
-﻿<script type="text/javascript" src="style/js/step6.js"></script>
+﻿<?php
+use yii\helpers\Html;
+?>
+<script type="text/javascript" src="style/js/step6.js"></script>
 		<div id="sidebar">
 			<div class="mainNavs">
 
@@ -14,19 +17,19 @@
         	<li data-searchtype="4">公司</li>
         	        </ul>
         <div class="searchtype_arrow"></div>
-        <input type="text" id="search_input" name = "kd"  tabindex="1" value=""  placeholder="请输入职位名称，如：产品经理"  />
-        <input type="hidden" name="spc" id="spcInput" value=""/>
-        <input type="hidden" name="pl" id="plInput" value=""/>
-        <input type="hidden" name="gj" id="gjInput" value=""/>
-        <input type="hidden" name="xl" id="xlInput" value=""/>
-        <input type="hidden" name="yx" id="yxInput" value=""/>
-        <input type="hidden" name="gx" id="gxInput" value="" />
-        <input type="hidden" name="st" id="stInput" value="" />
-        <input type="hidden" name="labelWords" id="labelWords" value="" />
-        <input type="hidden" name="lc" id="lc" value="" />
-        <input type="hidden" name="workAddress" id="workAddress" value=""/>
-                <input type="hidden" name="city" id="cityInput" value=""/>
-                <input type="submit" id="search_button" value="搜索" />
+            <input type="text" id="search_input" name = "kd"  tabindex="1" value=""  placeholder="请输入职位名称，如：产品经理"  />
+            <input type="hidden" name="spc" id="spcInput" value=""/>
+            <input type="hidden" name="pl" id="plInput" value=""/>
+            <input type="hidden" name="gj" id="gjInput" value=""/>
+            <input type="hidden" name="xl" id="xlInput" value=""/>
+            <input type="hidden" name="yx" id="yxInput" value=""/>
+            <input type="hidden" name="gx" id="gxInput" value="" />
+            <input type="hidden" name="st" id="stInput" value="" />
+            <input type="hidden" name="labelWords" id="labelWords" value="" />
+            <input type="hidden" name="lc" id="lc" value="" />
+            <input type="hidden" name="workAddress" id="workAddress" value=""/>
+            <input type="hidden" name="city" id="cityInput" value=""/>
+            <?=Html::submitButton('搜索',['id'=>'search_button']);?>
 				
     </form>
 </div>
