@@ -22,8 +22,8 @@ for($i=1;$i<90;$i++){
 }
 //form表单开始
 $form = ActiveForm::begin([
-    'options' => ['class' => 'form-horizontal','enctype' => 'multipart/form-data',
-    ],
+    'options' => ['class' => 'form-horizontal','enctype' => 'multipart/form-data'],
+    'action'=>['business/company_add']
 //    'action' => 'index.php?r=people/people_one_add'
 ]);
 ?>
@@ -95,7 +95,8 @@ $form = ActiveForm::begin([
     map.centerAndZoom("郑州",5);
     //单击获取点击的经纬度
     map.addEventListener("click",function(e){
-        $('#business-business_coordinate').attr("value",e.point.lng + "," + e.point.lat)
+        $('#businessform-business_coordinate').val(e.point.lng + "," + e.point.lat)
+        $('#business-business_coordinate').val(e.point.lng + "," + e.point.lat)
 //        alert(e.point.lng + "," + e.point.lat);
     });
     map.enableScrollWheelZoom();   //启用滚轮放大缩小，默认禁用
