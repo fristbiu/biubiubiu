@@ -52,6 +52,43 @@ class ShowController extends CommonController{
     	}
     	return $advertise;
     }
+    public function actionWhere(){
+//        $business = Business::find()->where(['bussiness_id'=>[1,2,3]])->asArray()->all();
+//        echo  json_encode($business);die;
+        $get = Yii::$app->request->get();
+        if($get['type']==1){
+            $advertise = Yii::$app->db->createCommand("SELECT * FROM advertise where advertise_allow=1 and advertise_name like '%".$get['text']."%'")
+                ->queryAll();
+            if($advertise){
+//                $business
+                $bussiness_id=array();
+                foreach($advertise as $key=>$val){
+                    $bussiness_id[]=$val['bussiness_id'];
+                }
+                $business = Business::find()->where(['bussiness_id'=>$bussiness_id])->asArray()->all();
+                return  json_encode($this->addinfo($business,$advertise));
+            }
+
+        }elseif($get['type']==2){
+            $bussiness = Yii::$app->db->createCommand("SELECT * FROM business where business_success=1 and business_name like '%".$get['text']."%'")
+                ->queryAll();
+
+            if($bussiness){
+                $bussiness_id=array();
+                foreach($bussiness as $key=>$val){
+                    $bussiness_id[]=$val['bussiness_id'];
+                }
+
+                $advertise = Advertise::find()->where(['bussiness_id'=>$bussiness_id])->asArray()->all();
+                return  json_encode($this->addinfo($bussiness,$advertise));
+//                return  json_encode($advertise);
+            }
+
+        }
+
+
+
+    }
 
 
 
