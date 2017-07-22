@@ -164,6 +164,7 @@
 	            <ul class="hot_pos reset">
 	            <?php foreach($newArr as $val){?>
 	            	<li>
+<<<<<<< HEAD
                         <div class="hot_pos_l">
                             <div class="mb10">
                                 <a href="h/jobs/120897.html" target="_blank"><?=$val['advertise_name']?></a>
@@ -188,6 +189,32 @@
                             <span> <em class="c7">规模：<?=$val['bussiness']['business_type'];?></em></span>
                             <ul class="companyTags reset"><li>绩效奖金</li><li>五险一金</li><li>带薪年假</li></ul>
                         </div></li>
+=======
+	            	<div class="hot_pos_l">
+                    	<div class="mb10">
+                        <a href="?r=toudi/toudi&id=<?=$val['advertise_id']?>" target="_blank"><?=$val['advertise_name']?></a> 
+                        &nbsp;
+                        <span class="c9">[北京]</span>
+                        </div>
+                        <span><em class="c7">月薪： </em>8k-12k</span>
+                        <span><em class="c7">经验：</em><?=$val['advertise_experience']?></span>
+                        <span><em class="c7">最低学历：</em> <?=$val['advertise_process']?></span>
+                        <br />
+                        <span><em class="c7">职位诱惑：</em>薪资高、发展空间大、前景优</span>
+                        <br />
+	                    <span><?=$val['advertise_star']?>发布</span>
+                        <!-- <a  class="wb">分享到微博</a> -->
+                    </div>
+                	<div class="hot_pos_r">
+                    	<div class="mb10"><a href="?r=business/businesslist&id=<?=$val['bussiness']['bussiness_id']?>" target="_blank"><?=$val['bussiness']['business_name'];?></a></div>
+                        <span><em class="c7">领域：</em> <?=$val['bussiness']['business_style'];?></span>
+                        <span><em class="c7">创始人：</em><?=$val['bussiness']['business_chairman_name']?></span>
+                        <br />
+                        <span> <em class="c7">阶段： </em><?=$val['bussiness']['business_stage']?></span>
+                        <span> <em class="c7">规模：<?=$val['bussiness']['business_type'];?></em></span>
+                        <ul class="companyTags reset"><li>绩效奖金</li><li>五险一金</li><li>带薪年假</li></ul>
+                    </div></li>
+>>>>>>> bd16ef40768937ad4544a75c880caa3acd9f59a8
 				<?php }?>
 	                <a href="list.html?city=%E5%85%A8%E5%9B%BD" class="btn fr" target="_blank">查看更多</a>
 	            </ul>
