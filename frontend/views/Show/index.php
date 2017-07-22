@@ -14,7 +14,7 @@ use yii\helpers\Html;
 
         <ul id="searchType">
         	        	<li data-searchtype="1" class="type_selected">职位</li>
-        	<li data-searchtype="4">公司</li>
+        	<li data-searchtype="2">公司</li>
         	        </ul>
         <div class="searchtype_arrow"></div>
             <input type="text" id="search_input" name = "kd"  tabindex="1" value=""  placeholder="请输入职位名称，如：产品经理"  />
