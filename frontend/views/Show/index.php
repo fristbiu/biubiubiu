@@ -1,4 +1,7 @@
-﻿<script type="text/javascript" src="style/js/step6.js"></script>
+﻿<?php
+use yii\helpers\Html;
+?>
+<script type="text/javascript" src="style/js/step6.js"></script>
 		<div id="sidebar">
 			<div class="mainNavs">
 
@@ -8,27 +11,25 @@
 		</div>
         <div class="content">	
 	        			<div id="search_box">
-		<form id="searchForm" name="searchForm" action="list.html" method="get">
+
         <ul id="searchType">
         	        	<li data-searchtype="1" class="type_selected">职位</li>
         	<li data-searchtype="4">公司</li>
         	        </ul>
         <div class="searchtype_arrow"></div>
-        <input type="text" id="search_input" name = "kd"  tabindex="1" value=""  placeholder="请输入职位名称，如：产品经理"  />
-        <input type="hidden" name="spc" id="spcInput" value=""/>
-        <input type="hidden" name="pl" id="plInput" value=""/>
-        <input type="hidden" name="gj" id="gjInput" value=""/>
-        <input type="hidden" name="xl" id="xlInput" value=""/>
-        <input type="hidden" name="yx" id="yxInput" value=""/>
-        <input type="hidden" name="gx" id="gxInput" value="" />
-        <input type="hidden" name="st" id="stInput" value="" />
-        <input type="hidden" name="labelWords" id="labelWords" value="" />
-        <input type="hidden" name="lc" id="lc" value="" />
-        <input type="hidden" name="workAddress" id="workAddress" value=""/>
-                <input type="hidden" name="city" id="cityInput" value=""/>
-                <input type="submit" id="search_button" value="搜索" />
-				
-    </form>
+            <input type="text" id="search_input" name = "kd"  tabindex="1" value=""  placeholder="请输入职位名称，如：产品经理"  />
+            <input type="hidden" name="spc" id="spcInput" value=""/>
+            <input type="hidden" name="pl" id="plInput" value=""/>
+            <input type="hidden" name="gj" id="gjInput" value=""/>
+            <input type="hidden" name="xl" id="xlInput" value=""/>
+            <input type="hidden" name="yx" id="yxInput" value=""/>
+            <input type="hidden" name="gx" id="gxInput" value="" />
+            <input type="hidden" name="st" id="stInput" value="" />
+            <input type="hidden" name="labelWords" id="labelWords" value="" />
+            <input type="hidden" name="lc" id="lc" value="" />
+            <input type="hidden" name="workAddress" id="workAddress" value=""/>
+            <input type="hidden" name="city" id="cityInput" value=""/>
+            <?=Html::submitButton('搜索',['id'=>'search_button']);?>
 </div>
 <style>
 .ui-autocomplete{width:488px;background:#fafafa !important;position: relative;z-index:10;border: 2px solid #91cebe;}
@@ -161,33 +162,35 @@
             	            	
             </ul>
             <div id="hotList">
-	            <ul class="hot_pos reset">
+	            <ul class="hot_pos reset" id="html">
 	            <?php foreach($newArr as $val){?>
 	            	<li>
-                        <div class="hot_pos_l">
-                            <div class="mb10">
-                                <a href="h/jobs/120897.html" target="_blank"><?=$val['advertise_name']?></a>
-                                &nbsp;
-                                <span class="c9">[北京]</span>
-                            </div>
-                            <span><em class="c7">月薪： </em><?=$val['advertise_money'];?></span>
-                            <span><em class="c7">经验：</em><?=$val['advertise_experience']?></span>
-                            <span><em class="c7">最低学历：</em> <?=$val['advertise_process']?></span>
-                            <br />
-                            <span><em class="c7">职位诱惑：</em>薪资高、发展空间大、前景优</span>
-                            <br />
-                            <span><?=$val['advertise_star']?>发布</span>
-                            <!-- <a  class="wb">分享到微博</a> -->
+
+	            	<div class="hot_pos_l">
+                    	<div class="mb10">
+                        <a href="?r=toudi/toudi&id=<?=$val['advertise_id']?>" target="_blank"><?=$val['advertise_name']?></a> 
+                        &nbsp;
+                        <span class="c9">[北京]</span>
                         </div>
-                        <div class="hot_pos_r">
-                            <div class="mb10"><a href="h/c/8143.html" target="_blank"><?=$val['bussiness']['business_name'];?></a></div>
-                            <span><em class="c7">领域：</em> <?=$val['bussiness']['business_style'];?></span>
-                            <span><em class="c7">创始人：</em><?=$val['bussiness']['business_chairman_name']?></span>
-                            <br />
-                            <span> <em class="c7">阶段： </em><?=$val['bussiness']['business_stage']?></span>
-                            <span> <em class="c7">规模：<?=$val['bussiness']['business_type'];?></em></span>
-                            <ul class="companyTags reset"><li>绩效奖金</li><li>五险一金</li><li>带薪年假</li></ul>
-                        </div></li>
+                        <span><em class="c7">月薪： </em><?=$val['advertise_money'];?></span>
+                        <span><em class="c7">经验：</em><?=$val['advertise_experience']?></span>
+                        <span><em class="c7">最低学历：</em> <?=$val['advertise_process']?></span>
+                        <br />
+                        <span><em class="c7">职位诱惑：</em>薪资高、发展空间大、前景优</span>
+                        <br />
+	                    <span><?=$val['advertise_star']?>发布</span>
+                        <!-- <a  class="wb">分享到微博</a> -->
+                    </div>
+                	<div class="hot_pos_r">
+                    	<div class="mb10"><a href="?r=business/businesslist&id=<?=$val['bussiness']['bussiness_id']?>" target="_blank"><?=$val['bussiness']['business_name'];?></a></div>
+                        <span><em class="c7">领域：</em> <?=$val['bussiness']['business_style'];?></span>
+                        <span><em class="c7">创始人：</em><?=$val['bussiness']['business_chairman_name']?></span>
+                        <br />
+                        <span> <em class="c7">阶段： </em><?=$val['bussiness']['business_stage']?></span>
+                        <span> <em class="c7">规模：<?=$val['bussiness']['business_type'];?></em></span>
+                        <ul class="companyTags reset"><li>绩效奖金</li><li>五险一金</li><li>带薪年假</li></ul>
+                    </div></li>
+
 				<?php }?>
 	                <a href="list.html?city=%E5%85%A8%E5%9B%BD" class="btn fr" target="_blank">查看更多</a>
 	            </ul>
@@ -224,3 +227,54 @@
         <div class="clear"></div>
         <input type="hidden" id="resubmitToken" value="" />
         <a id="backtop" title="回到顶部" rel="nofollow"></a>
+<script>
+    $(function(){
+        $('#search_button').click(function(){
+            var type=$('#searchType').children().first().attr('data-searchtype')
+            var text=$('#search_input').val()
+            $.ajax({
+                type: "get",
+                url: "?r=show/where",
+                data: {'type':type,'text':text},
+                async: false,
+                dataType:"json",
+                success: function(msg){
+                    console.log(msg)
+//                   html(msg)
+                }
+            });
+        })
+
+        function html(data){
+            var _html='<ul class="hot_pos reset" id="html">';
+            $.each(data,function(key,val){
+                _html+="<li>";
+                _html+="<div class='hot_pos_1' style='float: left'>";
+                _html+="<div class='mb10'>";
+                _html+="<a href='h/jobs/120897.html' target='_blank'>"+val.advertise_name+"</a> ";
+                _html+="&nbsp;";
+                _html+="<span class='c9'>[北京]</span>";
+                _html+='</div>'
+                _html+="<span><em class='c7'>月薪： </em>"+val.advertise_money+"</span>";
+                _html+="<span><em class='c7'>经验：</em>"+val.advertise_experience+"</span>";
+                _html+="<span><em class='c7'>最低学历：</em> "+val.advertise_process+"</span>";
+                _html+='<br />';
+                _html+='<span><em class="c7">职位诱惑：</em>薪资高、发展空间大、前景优</span>';
+                _html+='<br />';
+                _html+='<span>'+val.advertise_star+'发布</span>';
+                _html+='</div>';
+                _html+='<div class="hot_pos_r">';
+                _html+='<div class="mb10"><a href="h/c/8143.html" target="_blank">'+val.bussiness.business_name+'</a></div>';
+                _html+='<span><em class="c7">领域：</em> '+val.bussiness.business_style+'</span>';
+                _html+='<span><em class="c7">创始人：</em>'+val.bussiness.business_chairman_name+'</span>';
+                _html+='<br />';
+                _html+='<span> <em class="c7">阶段： </em>'+val.bussiness.business_stage+'</span>';
+                _html+='<span> <em class="c7">规模：'+val.bussiness.business_type+'</em></span>';
+                _html+='<ul class="companyTags reset"><li>绩效奖金</li><li>五险一金</li><li>带薪年假</li></ul>';
+                _html+='</div></li>';
+            })
+            _html+='</ul>';
+            $('#html').html(_html)
+        }
+    })
+</script>
