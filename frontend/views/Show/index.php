@@ -181,7 +181,7 @@ use yii\helpers\Html;
                         <!-- <a  class="wb">分享到微博</a> -->
                     </div>
                 	<div class="hot_pos_r">
-                    	<div class="mb10"><a href="?r=business/businesslist&id=<?=$val['bussiness']['bussiness_id']?>" target="_blank"><?=$val['bussiness']['business_name'];?></a></div>
+                    	<div class="mb10"><a href="?r=business/companylist&id=<?=$val['bussiness']['bussiness_id']?>" target="_blank"><?=$val['bussiness']['business_name'];?></a></div>
                         <span><em class="c7">领域：</em> <?=$val['bussiness']['business_style'];?></span>
                         <span><em class="c7">创始人：</em><?=$val['bussiness']['business_chairman_name']?></span>
                         <br />
