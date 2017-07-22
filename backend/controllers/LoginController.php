@@ -11,6 +11,6 @@ use yii\web\Controller;
 
 class LoginController extends Controller{
     public function actionIndex(){
-         return $this->render('login');
+         return $this->renderPartial('login');
     }
 }

@@ -12,17 +12,13 @@ use common\models\jobtype;
 class ShowController extends Controller{
     //此网页里有递归，↓是递归用来接收数组的
     public $recursion=array();
+    public $layout='common';
     public function actionIndex(){
-        header("Content-Type: text/html;charset=utf-8");
-        $sql=jobtype::find()->asArray()->all();
-        //递归
-        $this->biu_digui($sql,0);
-        print_r($this->recursion);
-
-
-
-
-//        return $this->renderPartial('index.html');
+        // $sql=jobtype::find()->asArray()->all();
+        // //递归
+        // $this->biu_digui($sql,0);
+        // print_r($this->recursion);
+        return $this->render('index');
     }
 
 //    职位类型数据处理（使用递归改变数组）
