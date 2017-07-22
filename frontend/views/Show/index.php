@@ -167,9 +167,9 @@ use yii\helpers\Html;
 	            	<li>
 	            	<div class="hot_pos_l">
                     	<div class="mb10">
-                        <a href="?r=toudi/toudi&id=<?=$val['advertise_id']?>" target="_blank"><?=$val['advertise_name']?></a> 
+                        <a href="?r=toudi/toudi&id=<?=$val['advertise_id']?>" target="_blank"><?=$val['advertise_name']?>
                         &nbsp;
-                        <span class="c9">[北京]</span>
+                        <span class="c9">[北京]</span></a> 
                         </div>
                         <span><em class="c7">月薪： </em><?=$val['advertise_money'];?></span>
                         <span><em class="c7">经验：</em><?=$val['advertise_experience']?></span>
@@ -238,13 +238,7 @@ use yii\helpers\Html;
                 async: false,
                 dataType:"json",
                 success: function(msg){
-<<<<<<< HEAD
-                    console.log(msg)
-//                   html(msg)
-=======
-//                    console.log(msg)
-                   html(msg)
->>>>>>> 7637bb8cd613fa5e27692f7de17e09e23224b0f3
+                   	html(msg)
                 }
             });
         })
