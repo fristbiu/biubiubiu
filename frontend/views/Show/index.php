@@ -30,8 +30,6 @@ use yii\helpers\Html;
             <input type="hidden" name="workAddress" id="workAddress" value=""/>
             <input type="hidden" name="city" id="cityInput" value=""/>
             <?=Html::submitButton('搜索',['id'=>'search_button']);?>
-				
-    
 </div>
 <style>
 .ui-autocomplete{width:488px;background:#fafafa !important;position: relative;z-index:10;border: 2px solid #91cebe;}
@@ -164,7 +162,7 @@ use yii\helpers\Html;
             	            	
             </ul>
             <div id="hotList">
-	            <ul class="hot_pos reset">
+	            <ul class="hot_pos reset" id="html">
 	            <?php foreach($newArr as $val){?>
 	            	<li>
 
