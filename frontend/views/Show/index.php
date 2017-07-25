@@ -1,36 +1,41 @@
 ﻿<?php
 use yii\helpers\Html;
 ?>
-<script type="text/javascript" src="style/js/step6.js"></script>
-		<div id="sidebar">
-			<div class="mainNavs">
 
-									<?php echo $this->render('left_link')?>
-							</div>
-			<a class="subscribe" href="subscribe.html" target="_blank">订阅职位</a>
-		</div>
-        <div class="content">	
-	        			<div id="search_box">
+<!--<script type="text/javascript" src="style/js/step6.js"></script>-->
+<div id="sidebar">
+    <div class="mainNavs">
+
+        <?php echo $this->render('left_link')?>
+    </div>
+    <a class="subscribe" href="subscribe.html" target="_blank">订阅职位</a>
+</div>
+<div class="content">
+    <div id="search_box">
 
         <ul id="searchType">
-        	        	<li data-searchtype="1" class="type_selected">职位</li>
-        	<li data-searchtype="2">公司</li>
-        	        </ul>
+            <li data-searchtype="1" class="type_selected">职位</li>
+            <li data-searchtype="2">公司</li>
+        </ul>
         <div class="searchtype_arrow"></div>
-            <input type="text" id="search_input" name = "kd"  tabindex="1" value=""  placeholder="请输入职位名称，如：产品经理"  />
-            <input type="hidden" name="spc" id="spcInput" value=""/>
-            <input type="hidden" name="pl" id="plInput" value=""/>
-            <input type="hidden" name="gj" id="gjInput" value=""/>
-            <input type="hidden" name="xl" id="xlInput" value=""/>
-            <input type="hidden" name="yx" id="yxInput" value=""/>
-            <input type="hidden" name="gx" id="gxInput" value="" />
-            <input type="hidden" name="st" id="stInput" value="" />
-            <input type="hidden" name="labelWords" id="labelWords" value="" />
-            <input type="hidden" name="lc" id="lc" value="" />
-            <input type="hidden" name="workAddress" id="workAddress" value=""/>
-            <input type="hidden" name="city" id="cityInput" value=""/>
-            <?=Html::submitButton('搜索',['id'=>'search_button']);?>
-</div>
+        <input type="text" id="search_input" name = "kd"  tabindex="1" value=""  placeholder="请输入职位名称，如：产品经理"  />
+        <input type="hidden" name="spc" id="spcInput" value=""/>
+        <input type="hidden" name="pl" id="plInput" value=""/>
+        <input type="hidden" name="gj" id="gjInput" value=""/>
+        <input type="hidden" name="xl" id="xlInput" value=""/>
+        <input type="hidden" name="yx" id="yxInput" value=""/>
+        <input type="hidden" name="gx" id="gxInput" value="" />
+        <input type="hidden" name="st" id="stInput" value="" />
+        <input type="hidden" name="labelWords" id="labelWords" value="" />
+        <input type="hidden" name="lc" id="lc" value="" />
+        <input type="hidden" name="workAddress" id="workAddress" value=""/>
+        <input type="hidden" name="city" id="cityInput" value=""/>
+<!--        使用js跳转-->
+        <?=Html::submitButton('搜索',['id'=>'search_button']);?>
+        <!--                <input type="submit" id="search_button" value="搜索" />-->
+
+
+    </div>
 <style>
 .ui-autocomplete{width:488px;background:#fafafa !important;position: relative;z-index:10;border: 2px solid #91cebe;}
 .ui-autocomplete-category{font-size:16px;color:#999;width:50px;position: absolute;z-index:11; right: 0px;/*top: 6px; */text-align:center;border-top: 1px dashed #e5e5e5;padding:5px 0;}
@@ -226,23 +231,18 @@ use yii\helpers\Html;
         <div class="clear"></div>
         <input type="hidden" id="resubmitToken" value="" />
         <a id="backtop" title="回到顶部" rel="nofollow"></a>
+
 <script>
     $(function(){
+//        用来跳转页面的
         $('#search_button').click(function(){
+//            获取查询公司还是职位
             var type=$('#searchType').children().first().attr('data-searchtype')
+//            文本框里的值
             var text=$('#search_input').val()
-            $.ajax({
-                type: "get",
-                url: "?r=show/where",
-                data: {'type':type,'text':text},
-                async: false,
-                dataType:"json",
-                success: function(msg){
-                   	html(msg)
-                }
-            });
+            location.href="?r=show_where/index&&where_type="+type+"&&where_text="+text
         })
-
+//        可以删除的，原来是用JS跳转的
         function html(data){
             var _html='<ul class="hot_pos reset" id="html">';
             $.each(data,function(key,val){
