@@ -61,8 +61,13 @@ var youdao_conv_id = 271546;
                                         	<!-- 用户是否激活 0-否；1-是 -->
 	                			       									                    <dd class="resume resume_web">
 				                        <div>
-								          <span> 你已有可投递的在线简历：<a title="jason的简历" target="_blank" href="jianli.html"><strong>jason的简历</strong></a></span><br>
-								          <span>简历更新于2014-07-01 15:53</span>
+				                        
+								          <span> 你已有可投递的在线简历：
+										<?php foreach($resume as $key => $val) {?>
+								          <a title="<?=$val['resume_name']?>的简历" target="_blank" href="?r=jianli/jianli_one&resume_id=<?=$val['resume_id']?>"><strong><?=$val['resume_name']?>的简历</strong></a>
+										<?php }?>
+								          </span><br>
+								          
 				                        </div>
 				                        <span class="setBtns">
 				                        	<a target="_blank" title="预览" href="h/resume/preview.html">预览</a> |
@@ -284,12 +289,15 @@ var youdao_conv_id = 271546;
 	    	</tr>
 	    	<tr>
 	        	<td>
-                    <form class="resumeSetForm" id="resumeSendForm">
+                    <form action="?r=toudi/resume_add" method="post">
 	            		<label class="radio">
-	            			<input type="radio" value="1" class="resume1" name="resumeName">
+	            		<?php foreach($resume as $k => $v) {?>
+	            			<input type="radio" value="<?=$v['resume_id']?>" class="resume1" name="resume_id">
 	            			在线简历：
-	            				            				<span title="jason的简历">jason的简历</span>
+	            				            				<span title="<?=$v['resume_name']?>的简历"><?=$v['resume_name']?>的简历</span>
+	            				            	
 	            				            		</label>
+	            				            		<?php }?>
             			<div class="setBtns">
             					            				<a target="_blank" href="h/resume/preview.html">预览</a> |
 	            										<a target="_blank" href="jianli.html">修改</a>
@@ -306,6 +314,7 @@ var youdao_conv_id = 271546;
 	            				            			<input type="file" onchange="file_check(this,'h/nearBy/updateMyResume.json','reUploadResume2')" id="reUploadResume2" name="newResume" title="支持word、pdf、ppt、txt、wps格式文件，大小不超过10M">
             			</div>
             			<div class="clear"></div>
+            			<input type="hidden" name="business_id" value="<?=$business['bussiness_id']?>" >	
             			<span style="display:none;" class="error">只支持word、pdf、ppt、txt、wps格式文件，请重新上传</span>
 	            		<label class="bgPink"><input type="checkbox" checked="checked">默认使用此简历直接投递，下次不再提示</label>
 	            		<span class="setTip error"></span>

@@ -3,7 +3,7 @@
     <dl class="company_center_aside">
         <dt>我收到的简历</dt>
         <dd>
-            <a href="">待处理简历</a>
+            <a href="?r=advertise/have_refus">待处理简历</a>
         </dd>
         <dd>
             <a href="?r=advertise/have_refus">待定简历</a>
