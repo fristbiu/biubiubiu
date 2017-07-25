@@ -25,8 +25,8 @@ class Show_whereController extends CommonController{
         $where_advertise=" where advertise_allow=1 ";
         //用来查询公司表
         $where_bussiness=" where business_success=1 ";
+//        接值进行判断，拼出查询语句
         $get = Yii::$app->request->get();
-        var_dump($get);
         if(!empty($get['where_text'])){
         if(!empty($get['where_type']) && $get['where_type']==1){
             $where_advertise.=" and advertise_name like '%".$get['where_text']."%'";
@@ -38,31 +38,30 @@ class Show_whereController extends CommonController{
             ->queryAll();
         $bussiness = Yii::$app->db->createCommand("SELECT * FROM business ".$where_bussiness)
             ->queryAll();
-
+//        数组的处理
         foreach($bussiness as $key=>$val){
             foreach($advertise as $k=>$v){
                 if($val['bussiness_id']==$v['bussiness_id']) {
                     $bussiness[$key]['advertise'][] = $v;
                 }
+//                删除已经用过的值，减少重复循环
                 unset($advertise[$k]);
             }
+//            删除没有发布工作的公司
             if(empty($bussiness[$key]['advertise'])){
                 unset($bussiness[$key]);
             }
         }
-
-
+//        小数据
         $sort=json_decode(file_get_contents($this->xiangmu_url().'.\message.php'),true);
+//        类型分类
         $job = \frontend\models\Jobtype::find()->where('parent_id>0')->asArray()->all();
         $job_z= array();
         foreach($job as $key=>$val){
             $job_z[$val['jobtype_id']]=$val['jobtype_name'];
         }
-
         return $this->render('companylis1t',['business'=>$bussiness,'sort'=>$sort,'job'=>$job_z]);
 
-//                return  json_encode($this->addinfo($bussiness,$advertise));
-//                return  json_encode($advertise);
 
     }
     //公共方法

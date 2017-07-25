@@ -30,6 +30,7 @@ use yii\helpers\Html;
         <input type="hidden" name="lc" id="lc" value="" />
         <input type="hidden" name="workAddress" id="workAddress" value=""/>
         <input type="hidden" name="city" id="cityInput" value=""/>
+<!--        使用js跳转-->
         <?=Html::submitButton('搜索',['id'=>'search_button']);?>
         <!--                <input type="submit" id="search_button" value="搜索" />-->
 
@@ -233,12 +234,15 @@ use yii\helpers\Html;
 
 <script>
     $(function(){
+//        用来跳转页面的
         $('#search_button').click(function(){
+//            获取查询公司还是职位
             var type=$('#searchType').children().first().attr('data-searchtype')
+//            文本框里的值
             var text=$('#search_input').val()
             location.href="?r=show_where/index&&where_type="+type+"&&where_text="+text
         })
-
+//        可以删除的，原来是用JS跳转的
         function html(data){
             var _html='<ul class="hot_pos reset" id="html">';
             $.each(data,function(key,val){
