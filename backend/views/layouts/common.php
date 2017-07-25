@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/public.css">
 </head>
 <body>
 <div class="public-header-warrp">
@@ -33,15 +33,15 @@
         <div class="public-ifame-leftnav">
             <div class="public-title-warrp">
                 <div class="public-ifame-title ">
-                    <a href="">首页</a>
+                    <a href="?r=show/index">首页</a>
                 </div>
             </div>
             <ul class="left-nav-list">
                 <li class="public-ifame-item">
-                    <a href="">公司审核</a>
+                    <a href="?r=show/bussinesslist">公司审核</a>
                 </li>
                 <li class="public-ifame-item">
-                    <a href="">个人简历管理</a>
+                    <a href="?r=show/jianli">职位审核</a>
                 </li>
                 <li class="public-ifame-item">
                     <a href="">轮播图管理</a>

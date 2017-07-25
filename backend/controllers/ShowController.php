@@ -7,32 +7,64 @@ namespace backend\controllers;
  * Time: 10:28
  */
 use yii\web\Controller;
-
+use Yii;
 use common\models\jobtype;
 class ShowController extends CommonController{
-    //此网页里有递归，↓是递归用来接收数组的
     public $recursion=array();
     public $layout='common';
-    public function actionIndex(){
-        // $sql=jobtype::find()->asArray()->all();
-        // //递归
-        // $this->biu_digui($sql,0);
-        // print_r($this->recursion);
+    /**
+     * 首页展示
+     * @access public 
+     * @return [type] [description]
+     */
+    public function actionIndex()
+    {
         return $this->render('index');
     }
 
-    //  职位类型数据处理（使用递归改变数组）
-    function biu_digui($data=array(),$parent,$style="-"){
-
-        foreach($data as $key=>$val){
-            if($val['parent_id']==$parent){
-
-                $this->recursion[$val['jobtype_id']] =$style.$val['jobtype_name'];
-
-                $this->biu_digui($data,$val['jobtype_id'],"-".$style);
-
-            }
-        }
-
+    /**
+     * 公司列表
+     * @access public 
+     * @author Ren
+     */
+    public function actionBussinesslist()
+    {
+        //获取公司表的数据
+        $businessArr=Yii::$app->db->createCommand('SELECT * FROM business')->queryAll();
+        return $this->render('businesslist',array('business'=>$businessArr));
     }
+
+    /**
+     * ajax修改公司的审核状态
+     * @access public 
+     * @param  state
+     */
+    public function actionState()
+    {
+        //接收数据
+        $state=Yii::$app->request->get('state');
+        $id=Yii::$app->request->get('id');
+        $a='';
+        if($state==1){
+            $a=0;
+        }else{
+            $a=1;
+        }
+        $bloon=Yii::$app->db->createCommand()->update('business',array('business_success'=>$a),"bussiness_id=$id")->execute();
+        if($bloon){
+            echo 1;
+        }else{
+            echo 0;
+        }
+    }
+
+    /**
+     * 简历列表
+     * @access public
+     */
+    public function actionJianli()
+    {
+        echo "22222";
+    }
+    
 }
