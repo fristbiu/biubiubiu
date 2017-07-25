@@ -8,6 +8,10 @@ use Yii;
 use yii\web\Controller;
 class CommonController extends Controller
 {
-
+	public function init(){
+        parent::init();
+        session_start();
+        //$session = Yii::$app->session;
+    }
 }
 ?>

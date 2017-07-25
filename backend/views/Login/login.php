@@ -1,3 +1,8 @@
+<?php 
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+use yii\captcha\Captcha;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,25 +17,25 @@
 	<div class="loginwarrp">
 		<div class="logo">管理员登陆</div>
         <div class="login_form">
-			<form id="Login" name="Login" method="post" onsubmit="" action="">
+			<!-- <form id="Login" name="Login" method="post" onsubmit="" action=""> -->
+			<?php $form=ActiveForm::begin(array('id'=>'Login','action'=>array('login/index'),'method'=>'post'));?>	
 				<li class="login-item">
-					<span>用户名：</span>
-					<input type="text" name="UserName" class="login_input">
+					<?=$form->field($model,'admin_name')->textInput(array('name'=>'admin_name','class'=>'login_input'));?>
 				</li>
 				<li class="login-item">
-					<span>密　码：</span>
-					<input type="password" name="password" class="login_input">
+					<?=$form->field($model,'admin_pwd')->textInput(array('name'=>'admin_pwd','class'=>'login_input'));?>
 				</li>
 				<li class="login-item verify">
-					<span>验证码：</span>
-					<input type="text" name="CheckCode" class="login_input verify_input">
+					<!-- <input type="text" name="CheckCode" class="login_input verify_input"> -->
+				<?=$form->field($model,'verifyCode')->widget(Captcha::className());?>
 				</li>
-				<img src="images/verify.png" border="0" class="verifyimg" />
+				<!-- <img src="images/verify.png" border="0" class="verifyimg" /> -->
 				<div class="clearfix"></div>
 				<li class="login-sub">
-					<input type="submit" name="Submit" value="登录" />
+					<?php //echo Html::submitButton('登&nbsp;录',array())?>
+					<input type="submit" name="" value="登录" />
 				</li>                      
-           </form>
+          	<?php ActiveForm::end();?>
 		</div>
 	</div>
 </div>

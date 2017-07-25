@@ -9,7 +9,7 @@ namespace backend\controllers;
 use yii\web\Controller;
 
 use common\models\jobtype;
-class ShowController extends Controller{
+class ShowController extends CommonController{
     //此网页里有递归，↓是递归用来接收数组的
     public $recursion=array();
     public $layout='common';
@@ -21,7 +21,7 @@ class ShowController extends Controller{
         return $this->render('index');
     }
 
-//    职位类型数据处理（使用递归改变数组）
+    //  职位类型数据处理（使用递归改变数组）
     function biu_digui($data=array(),$parent,$style="-"){
 
         foreach($data as $key=>$val){
