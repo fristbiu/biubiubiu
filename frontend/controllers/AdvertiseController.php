@@ -12,6 +12,7 @@ use yii\helpers\Url;
 use frontend\models\Advertise;
 use frontend\models\Jobtype;
 use frontend\models\Business;
+use frontend\models\Resume;
 class AdvertiseController extends CommonController{
     //    项目样式
     public $layout = 'common';
@@ -83,8 +84,21 @@ class AdvertiseController extends CommonController{
         } 
     }
     public function actionHave_refus(){
-
-        return $this->render('have_refus');
+        $user_id=$_SESSION['user_id'];
+        $business=Business::find()->where(['user_id'=>$user_id])->asArray()->one();
+        $business_id=$business['bussiness_id'];
+        $sql="select resume_id from business_resume where business_id=$business_id";
+        $resume=Yii::$app->db->createCommand($sql)->queryAll();
+        $str='';
+        foreach($resume as $k => $v)
+        {
+            $str=$str.','.$v['resume_id']; 
+        }
+        $resume_id=substr($str,1);
+        $arr=Resume::find()->where("resume_id in ($resume_id)")->asArray()->all();
+        $count=count($arr);        //print_r($arr);die;
+       // echo $resume_id;die;
+        return $this->render('have_refus',['arr'=>$arr,'count'=>$count]);
     }
 //    发布的职位------发布---有效职位
     public function actionPositions(){

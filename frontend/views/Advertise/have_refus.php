@@ -4,7 +4,7 @@
                     <dt>
                         <h1>
                             <em></em>
-                           	 不合适简历 <span>（共1份）</span>                        </h1>
+                           	 待处理简历 <span>（共<?=$count?>份）</span>                        </h1>
                     </dt>
                     <dd>
                     	<form action="have_refus.html" method="get" id="filterForm">
@@ -63,31 +63,33 @@
      </dl>
           <input type="hidden" value="0" name="filterStatus" id="filterStatus">
      <input type="hidden" value="" name="positionId" id="positionId">
+
  </div><!-- end .filter_options -->	                        	                        		                        <ul class="reset resumeLists">
+ 								<?php foreach($arr as $k => $v) {?>
 		                            			                            <li data-id="1686182" class="onlineResume">
 			                                <label class="checkbox">
 			                                    <input type="checkbox">
 			                                    <i></i>
 			                                </label>
 			                                <div class="resumeShow">
-			                                				                                    <a title="预览在线简历" target="_blank" class="resumeImg" href="resumeView.html?deliverId=1686182">
+			                                				                                    <a title="预览在线简历" target="_blank" class="resumeImg" href="">
 			                                    	<img src="style/images/default_headpic.png">
 			                                    </a>
 			                                    			                                    <div class="resumeIntro">
 			                                        <h3 class="unread">
-																	                                        	<a target="_blank" title="预览jason的简历" href="resumeView.html?deliverId=1686182">
-			                                        				                                            jason的简历
+																	                                        	<a target="_blank" title="预览<?=$v['resume_name']?>的简历" href="resumeView.html?deliverId=1686182">
+			                                        				                                            <?=$v['resume_name']?>的简历
 			                                        	</a>
 			                                        					                           	 			<em></em>
 			                                        </h3> 
-			                                        <span class="fr">投递时间：2014-07-01 17:08</span>
+			                                        
 			                                        <div> 
-			                                        	jason  			                                        	 / 男 			                                        	/ 大专 			                                        	/ 3年  			                                        	/ 广州 			                                           				                                        		<br>
-			                                            	高级产品经理 · 上海辉硕科技有限公司 | 本科 · 北京大学
+			                                        	<?=$v['resume_name']?> 			                                        	 / <?=$v['resume_age']?> 			                                        	/ 大专 			                                        	/ 3年  			                                        	/ 广州 			                                           				                                        		<br>
+			                                            	<?=$v['resume_historywork']?>  | <?=$v['resume_process']?>
 			                                            			                                        </div>
 			                                        <div class="jdpublisher">
 				                                        <span>
-				                                        	应聘职位：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">随便写</a>
+				                                        	应聘职位：<a title="<?=$v['resume_dreamework']?>" target="_blank" href="http://www.lagou.com/jobs/149594.html"><?=$v['resume_dreamework']?></a>
 				                                       						                                        </span>
 			                                        </div>
 			                                    </div>
@@ -100,6 +102,7 @@
 			                                    </div>
 			                                </div>
 			                            </li>
+			                            <?php }?>
 		                            		                    	</ul><!-- end .resumeLists -->
 		                    		                                                </form>
                     </dd>
