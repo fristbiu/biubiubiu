@@ -102,7 +102,10 @@ class AdvertiseController extends CommonController{
     }
 //    发布的职位------发布---有效职位
     public function actionPositions(){
-        $arr=Advertise::find()->where(['status'=>1])->asArray()->all();
+        $user_id=$_SESSION['user_id'];
+        $business=Business::find()->where(['user_id'=>$user_id])->asArray()->one();
+        $business_id=$business['bussiness_id'];
+        $arr=Advertise::find()->where(['status'=>1,'bussiness_id'=>$business_id])->asArray()->all();
         $count=count($arr);
         //print_r($arr);die;
         return $this->render('positions',['arr'=>$arr,'count'=>$count]);
