@@ -26,11 +26,7 @@ class ToudiController extends CommonController
 //        接收公司id
     	$id=Yii::$app->request->get('id');
        //echo $id;die;
-        //查询简历信息
-        $user_id=$_SESSION['user_id'];
-        $personal=Personal::find()->where(['user_id'=>$user_id])->asArray()->one();
-        $personal_id=$personal['personal_id'];
-        $resume=Resume::find()->where(['personal_id'=>$personal_id])->asArray()->all();
+       
     	//print_r($resume);die;
         //查询招聘信息
     	$arr=Advertise::find()->where(['advertise_id'=>$id])->asArray()->one();
@@ -47,6 +43,21 @@ class ToudiController extends CommonController
         $str=explode(',',$business['business_coordinate']);
         $lng=$str[0];
         $lat=$str[1];
+
+         //查询简历信息
+       // $user_id=$_SESSION['user_id'];
+        if(empty($_SESSION['user_id']))
+        {
+            $resume=[];
+        }
+        else
+        {
+            $user_id=$_SESSION['user_id'];
+            $personal=Personal::find()->where(['user_id'=>$user_id])->asArray()->one();
+            $personal_id=$personal['personal_id'];
+            $resume=Resume::find()->where(['personal_id'=>$personal_id])->asArray()->all();
+        }
+       
     	// $arr['business_name']=$business['business_name'];
     	// $arr['business_address']=$business['business_address'];
     	//print_r($arr);die;
